@@ -76,7 +76,7 @@ export default function Home() {
 
           <h1 className="text-5xl md:text-6xl font-poppins font-bold text-foreground mb-6 leading-tight">
             GitHub & React
-            <span className="block text-primary">完全ガイド</span>
+            <span className="block text-primary">環境構築</span>
           </h1>
 
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
