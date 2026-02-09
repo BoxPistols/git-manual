@@ -3,7 +3,8 @@ import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
 import OSToggle from '@/components/OSToggle';
-import { useState } from 'react';
+import { useOS } from '@/contexts/OSContext';
+
 
 /**
  * React 実践 - デザイン変更と Git 管理
@@ -15,7 +16,7 @@ import { useState } from 'react';
  */
 
 export default function ModifyReact() {
-  const [selectedOS, setSelectedOS] = useState<'mac' | 'windows'>('mac');
+  const { selectedOS } = useOS();
 
   return (
     <div className="min-h-screen bg-background">
@@ -38,7 +39,7 @@ export default function ModifyReact() {
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
-          <OSToggle onOSChange={setSelectedOS} />
+          <OSToggle />
         </div>
 
         {/* Purpose of This Section */}

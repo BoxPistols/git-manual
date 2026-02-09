@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
 import OSToggle from '@/components/OSToggle';
-import { useState } from 'react';
+import { useOS } from '@/contexts/OSContext';
 
 /**
  * 環境準備 - Cursor インストール
@@ -14,7 +14,7 @@ import { useState } from 'react';
  */
 
 export default function CursorInstall() {
-  const [selectedOS, setSelectedOS] = useState<'mac' | 'windows'>('mac');
+  const { selectedOS } = useOS();
 
   return (
     <div className="min-h-screen bg-background">
@@ -37,7 +37,7 @@ export default function CursorInstall() {
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
-          <OSToggle onOSChange={setSelectedOS} />
+          <OSToggle />
         </div>
 
         {/* What is Cursor */}

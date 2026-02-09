@@ -1,16 +1,16 @@
-import { useState } from 'react';
 import { Apple, Monitor } from 'lucide-react';
+import { useOS } from '@/contexts/OSContext';
 
 interface OSToggleProps {
-  onOSChange: (os: 'mac' | 'windows') => void;
+  onOSChange?: (os: 'mac' | 'windows') => void;
 }
 
 export default function OSToggle({ onOSChange }: OSToggleProps) {
-  const [selectedOS, setSelectedOS] = useState<'mac' | 'windows'>('mac');
+  const { selectedOS, setSelectedOS } = useOS();
 
   const handleOSChange = (os: 'mac' | 'windows') => {
     setSelectedOS(os);
-    onOSChange(os);
+    onOSChange?.(os);
   };
 
   return (
