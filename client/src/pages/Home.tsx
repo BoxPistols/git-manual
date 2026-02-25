@@ -1,4 +1,3 @@
-import { useLocation } from 'wouter';
 import { ArrowRight, CheckCircle2, Zap, Users, BookOpen, Keyboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useOS } from '@/contexts/OSContext';
