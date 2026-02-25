@@ -38,9 +38,11 @@ import VSCodeSetup from "./pages/advanced/VSCode";
 import Integration from "./pages/advanced/Integration";
 
 // AI Agent Pages
+import AIAgentOverview from "./pages/ai-agent/Overview";
 import ClaudeCodeSetup from "./pages/ai-agent/ClaudeCodeSetup";
 import ClaudeCodeBasics from "./pages/ai-agent/ClaudeCodeBasics";
-import GeminiCli from "./pages/ai-agent/GeminiCli";
+import CursorCline from "./pages/ai-agent/CursorCline";
+import SubTools from "./pages/ai-agent/SubTools";
 
 function Router() {
   return (
@@ -80,9 +82,11 @@ function Router() {
           <Route path={"/advanced/integration"} component={Integration} />
           
           {/* AI Agent Section */}
+          <Route path={"/ai-agent/overview"} component={AIAgentOverview} />
           <Route path={"/ai-agent/claude-code-setup"} component={ClaudeCodeSetup} />
           <Route path={"/ai-agent/claude-code-basics"} component={ClaudeCodeBasics} />
-          <Route path={"/ai-agent/gemini-cli"} component={GeminiCli} />
+          <Route path={"/ai-agent/cursor-cline"} component={CursorCline} />
+          <Route path={"/ai-agent/sub-tools"} component={SubTools} />
 
           <Route path={"/404"} component={NotFound} />
           {/* Final fallback route */}

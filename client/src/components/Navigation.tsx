@@ -61,9 +61,11 @@ const sections = [
     id: 'ai-agent',
     title: 'AI エージェント連携',
     subsections: [
+      { title: 'AI コーディング環境の全体像', href: '/ai-agent/overview' },
       { title: 'Claude Code 導入', href: '/ai-agent/claude-code-setup' },
       { title: 'Claude Code 基本操作', href: '/ai-agent/claude-code-basics' },
-      { title: 'Gemini CLI 導入（おまけ）', href: '/ai-agent/gemini-cli' },
+      { title: 'Cursor + Cline 導入', href: '/ai-agent/cursor-cline' },
+      { title: '予備ツール（Gemini / Warp / Antigravity）', href: '/ai-agent/sub-tools' },
     ],
   },
 ];

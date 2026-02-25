@@ -14,7 +14,7 @@ export default function ClaudeCodeBasics() {
       <div className="bg-primary/5 border-b border-border">
         <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
           <div className="inline-block mb-4 px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-semibold">
-            AI AGENT 2 / 3
+            AI AGENT 3 / 5
           </div>
           <h1 className="text-4xl font-poppins font-bold text-foreground mb-4">
             Claude Code 基本操作
@@ -365,8 +365,8 @@ pnpm dev`}
             <ChevronLeft size={20} />
             前へ
           </Button>
-          <Button className="gap-2" onClick={() => (window.location.href = '/ai-agent/gemini-cli')}>
-            次へ：Gemini CLI 導入（おまけ）
+          <Button className="gap-2" onClick={() => (window.location.href = '/ai-agent/cursor-cline')}>
+            次へ：Cursor + Cline 導入
             <ArrowRight size={20} />
           </Button>
         </div>

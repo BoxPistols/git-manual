@@ -14,7 +14,7 @@ export default function ClaudeCodeSetup() {
       <div className="bg-primary/5 border-b border-border">
         <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
           <div className="inline-block mb-4 px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-semibold">
-            AI AGENT 1 / 3
+            AI AGENT 2 / 5
           </div>
           <h1 className="text-4xl font-poppins font-bold text-foreground mb-4">
             Claude Code 導入
@@ -359,7 +359,7 @@ claude`}
 
         {/* ナビゲーション */}
         <div className="flex justify-between items-center pt-8 border-t border-border">
-          <Button variant="outline" onClick={() => (window.location.href = '/advanced/integration')}>
+          <Button variant="outline" onClick={() => (window.location.href = '/ai-agent/overview')}>
             <ChevronLeft size={20} />
             前へ
           </Button>
