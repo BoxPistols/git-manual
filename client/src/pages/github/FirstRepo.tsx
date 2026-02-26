@@ -402,8 +402,8 @@ export default function FirstRepo() {
         {/* Navigation */}
         <div className="flex justify-between items-center pt-8 border-t border-border">
           <Button variant="outline" onClick={() => window.location.href = "/github/setup"}>戻る</Button>
-          <Button className="gap-2" onClick={() => window.location.href = "/workflow/commit"}>
-              次へ：ファイル作成と Commit
+          <Button className="gap-2" onClick={() => window.location.href = "/github/markdown"}>
+              次へ：Markdown 入門
               
               <ArrowRight size={20} />
             </Button>
