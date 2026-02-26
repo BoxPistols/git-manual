@@ -18,6 +18,7 @@ import NodejsInstall from "./pages/environment/Nodejs";
 import GitHubAccount from "./pages/github/Account";
 import GitSetup from "./pages/github/Setup";
 import FirstRepo from "./pages/github/FirstRepo";
+import MarkdownGuide from "./pages/github/Markdown";
 
 // Workflow Pages
 import CommitPage from "./pages/workflow/Commit";
@@ -66,7 +67,8 @@ function Router() {
           <Route path={"/github/account"} component={GitHubAccount} />
           <Route path={"/github/setup"} component={GitSetup} />
           <Route path={"/github/first-repo"} component={FirstRepo} />
-          
+          <Route path={"/github/markdown"} component={MarkdownGuide} />
+
           {/* Workflow Section */}
           <Route path={"/workflow/commit"} component={CommitPage} />
           <Route path={"/workflow/push-pull"} component={PushPullPage} />
