@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,21 @@ export default function GitSetup() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="このページで設定すること"
+          tags={['ユーザー情報', 'SSH キー', '初回のみ']}
+        >
+          <p>
+            Git の設定では「誰が変更したか」を記録するための名前とメールアドレスを登録します。これが設定されていないと commit ができません。
+          </p>
+          <p>
+            SSH キーはパスワード認証の代わりに使う仕組みです。公開鍵を GitHub に登録すると、以降はパスワードなしで接続できます。鍵と鍵穴の関係と同じで、手元の秘密鍵が鍵、GitHub 側の公開鍵が鍵穴になります。
+          </p>
+          <p>
+            いずれも一度設定すれば、以後の操作で改めて設定し直す必要はありません。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />

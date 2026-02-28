@@ -2,6 +2,7 @@ import { ArrowRight, Upload, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,18 @@ export default function PushPull() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="Push と Pull とは"
+          tags={['クラウド同期', 'チーム共有', 'バックアップ']}
+        >
+          <p>
+            Push は手元の変更を GitHub に送る操作、Pull は GitHub の変更を手元に取り込む操作です。Google Drive でいう「アップロード」と「ダウンロード」に近いです。ただし Git は差分だけを管理するため、ファイルが丸ごと上書きされることはありません。
+          </p>
+          <p>
+            作業が終わったら Push してバックアップする、別のパソコンで作業を再開する前に Pull する、という流れが基本です。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />

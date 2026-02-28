@@ -2,6 +2,7 @@ import { ArrowRight, GitBranch } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,21 @@ export default function CommitWorkflow() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="Commit とは"
+          tags={['変更記録', 'セーブポイント', '履歴管理']}
+        >
+          <p>
+            Commit はファイルの変更を「記録」する操作です。ゲームのセーブポイントと同じで、その時点の状態を保存しておくと、後でその時点に戻れます。
+          </p>
+          <p>
+            Commit には変更の説明（コミットメッセージ）を付けます。「ナビバーの色を変更」「ボタンを追加」など、何をしたかを一言で書きます。後で履歴を見返すときに参照できます。
+          </p>
+          <p>
+            機能が一段落したタイミングで Commit するのが一般的です。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />
@@ -50,6 +66,11 @@ export default function CommitWorkflow() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               Commit は、ファイルの変更を Git に記録する操作です。「保存」ボタンを押すのと似ていますが、Git では変更内容とメッセージを一緒に記録します。これにより、後で「いつ、誰が、何を変更したか」を確認できます。
             </p>
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+              <p className="text-sm text-foreground/80">
+                <strong>例：</strong> ゲームのセーブポイントに近い考え方です。Ctrl+S はファイルを上書き保存しますが、Commit はその時点の状態を履歴として残します。後から特定の Commit に戻すことができます。
+              </p>
+            </div>
 
             <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
               <h3 className="font-semibold text-foreground mb-3">Commit のメリット</h3>
@@ -144,9 +165,10 @@ export default function CommitWorkflow() {
                   1
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-1">git add</h4>
+                  <h4 className="font-semibold text-foreground mb-1">git add（ステージング）</h4>
                   <p className="text-muted-foreground text-sm">
-                    変更したファイルを「ステージング」します。これは、どのファイルを Commit するかを指定する操作です。
+                    変更したファイルを「ステージング」します。これは、どのファイルを Commit するかを指定する操作です。<br />
+                    <span className="text-foreground/60 text-xs">例：宅配便に入れる荷物を選ぶ作業に近いです。段ボールに入れたものだけが次のステップ（Commit）の対象になります。</span>
                   </p>
                 </div>
               </div>

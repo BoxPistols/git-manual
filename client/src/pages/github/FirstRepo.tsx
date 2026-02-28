@@ -2,6 +2,7 @@ import { ArrowRight, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,21 @@ export default function FirstRepo() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="リポジトリとは"
+          tags={['プロジェクト管理', 'バックアップ', 'チーム共有', 'GitHub Pages']}
+        >
+          <p>
+            リポジトリは「変更履歴が付いたプロジェクトフォルダ」です。Google Drive のフォルダと似ていますが、ファイルを上書きしても以前のバージョンが残っている点が違います。
+          </p>
+          <p>
+            コードを Slack に貼る代わりに GitHub のリンクを共有する、という使い方が一般的です。リンクを開けば誰でも最新のコードを確認できます。
+          </p>
+          <p>
+            GitHub Pages を使うと、リポジトリの内容をそのままウェブサイトとして無料で公開することもできます。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />
@@ -48,8 +64,13 @@ export default function FirstRepo() {
           </h2>
           <div className="bg-card border border-border rounded-lg p-8 space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              リポジトリは、プロジェクトのファイルと変更履歴を保存する場所です。フォルダのようなものと考えてください。GitHub 上のリポジトリをローカルにコピーすることで、自分のパソコンで開発できます。
+              リポジトリは、プロジェクトのファイルと変更履歴を保存する場所です。通常のフォルダと違い、ファイルを上書きしても以前のバージョンが履歴として残ります。GitHub 上のリポジトリをローカルにコピーすることで、自分のパソコンで作業できます。
             </p>
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+              <p className="text-sm text-foreground/80">
+                <strong>例：</strong> Notion のページ履歴に近いです。「1週間前の状態に戻す」という操作が、プロジェクト全体のファイルに対してできます。
+              </p>
+            </div>
 
             <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
               <h3 className="font-semibold text-foreground mb-3">リポジトリの構成</h3>

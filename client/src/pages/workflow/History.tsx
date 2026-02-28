@@ -2,6 +2,7 @@ import { ArrowRight, History } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,18 @@ export default function HistoryWorkflow() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="履歴・差分の確認とは"
+          tags={['変更の確認', 'レビュー', 'デバッグ']}
+        >
+          <p>
+            git log はコミットの一覧を、git diff は2つの状態の差分を表示するコマンドです。Google ドキュメントの「変更履歴を表示」に近い機能です。
+          </p>
+          <p>
+            「どのファイルの、どの行が変わったのか」を確認できます。誰かのコードをレビューする前や、変更を加えた後に意図した通りになっているか確認するときに使います。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />

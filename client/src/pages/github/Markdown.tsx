@@ -2,6 +2,7 @@ import { ArrowRight, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 
 /**
  * GitHub 基礎 - Markdown 入門
@@ -31,6 +32,20 @@ export default function MarkdownGuide() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="Markdown とは"
+          tags={['README', 'GitHub 全般', 'Notion / Obsidian']}
+        >
+          <p>
+            Markdown は、記号を使ってテキストに見出しや太字・リストを付ける記法です。GitHub の README やコメント欄で使われています。
+          </p>
+          <p>
+            Word で太字にするには Ctrl+B を押しますが、Markdown では <code className="text-xs bg-muted px-1 py-0.5 rounded">**太字**</code> と書きます。HTML タグより短く、プレーンテキストとして読んでも意味が通ります。Notion や Obsidian でも同じ記法が使えます。
+          </p>
+          <p>
+            ChatGPT や Claude の回答も Markdown で書かれているため、基本的な記法を知っておくと読みやすくなります。
+          </p>
+        </WhyNowBox>
 
         {/* Why Markdown */}
         <section className="mb-12">

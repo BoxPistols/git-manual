@@ -2,6 +2,7 @@ import { ArrowRight, GitBranch } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,18 @@ export default function BranchWorkflow() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="ブランチとは"
+          tags={['並行開発', 'リスク分離', 'PR・レビュー']}
+        >
+          <p>
+            ブランチは作業用のコピーを作る機能です。「別名で保存」のようなもので、元のコードはそのまま残した状態で変更を試せます。
+          </p>
+          <p>
+            例えば、AI に大きな変更を依頼するときにブランチを使うと、うまくいかなかった場合でも元のコードに戻せます。変更が問題なければ main ブランチに取り込み（マージ）、問題があればそのブランチを捨てて終わりです。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />
@@ -50,6 +63,11 @@ export default function BranchWorkflow() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               ブランチは、プロジェクトの「分岐」です。メインの開発ラインから分岐させて、新しい機能を開発したり、バグを修正したりできます。複数人での開発時に、互いに影響を与えずに作業できます。
             </p>
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+              <p className="text-sm text-foreground/80">
+                <strong>例：</strong> Word の「名前を付けて保存」で別ファイルを作る操作に近いです。ただし Git のブランチは差分だけを管理するため、元のファイルのコピーではありません。作業が完了したら main に取り込めます（マージ）。
+              </p>
+            </div>
 
             <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
               <h3 className="font-semibold text-foreground mb-3">ブランチのメリット</h3>

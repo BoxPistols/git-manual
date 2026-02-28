@@ -1,6 +1,7 @@
 import { ArrowRight, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 
 /**
  * GitHub 基礎 - GitHub アカウント作成
@@ -29,6 +30,18 @@ export default function GitHubAccount() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="GitHub アカウントとは"
+          tags={['AI ツール連携', 'コード共有', 'バックアップ']}
+        >
+          <p>
+            GitHub アカウントは、作ったプロジェクトをオンラインで管理するための ID です。Cursor や Claude Code などの AI ツールも、GitHub アカウントと連携して動きます。
+          </p>
+          <p>
+            メールアドレスがないとオンラインサービスに登録できないのと同じで、GitHub アカウントがないとコードのオンライン管理を始められません。登録自体は数分で完了します。
+          </p>
+        </WhyNowBox>
+
         {/* Why GitHub Account */}
         <section className="mb-12">
           <h2 className="text-3xl font-poppins font-bold text-foreground mb-6">
@@ -36,7 +49,7 @@ export default function GitHubAccount() {
           </h2>
           <div className="bg-card border border-border rounded-lg p-8 space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              GitHub アカウントがあれば、以下のことができるようになります：
+              GitHub アカウントがあれば、以下のことができます：
             </p>
 
             <div className="space-y-4">
@@ -184,7 +197,7 @@ export default function GitHubAccount() {
                 GitHub 上で使用するユーザー名を設定してください。このユーザー名は公開されます。
               </p>
               <InfoBox type="info">
-                ユーザー名は英数字とハイフン、アンダースコアのみ使用可能です。
+                ユーザー名は英数字とハイフン、アンダースコアのみ使用可能です。URL に表示されるので、本名またはブランド名に近いものを推奨します（例: yamada-taro, design-studio-x）。後から変更もできますが、URL が変わるため早めに決めた方が良いです。
               </InfoBox>
             </div>
 
