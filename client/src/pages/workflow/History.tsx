@@ -2,6 +2,7 @@ import { ArrowRight, History } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,21 @@ export default function HistoryWorkflow() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="履歴・差分 = AI が間違えた時の「証拠と保険」"
+          tags={['デバッグ', 'レビュー', 'AI 監視', '監査ログ']}
+        >
+          <p>
+            AI はときに予期しない変更を加えることがあります。「どこが変わったのか」を瞬時に把握できるのが <code className="text-xs bg-muted px-1 py-0.5 rounded">git diff</code> と <code className="text-xs bg-muted px-1 py-0.5 rounded">git log</code> です。<strong>AI が何をしたか追跡するための監視ログ</strong>として活用できます。
+          </p>
+          <p>
+            <strong>例えるなら：</strong> Google ドキュメントの「変更履歴を表示」機能です。「昨日の山田さんの編集」のように、「3日前の AI による変更」を赤/緑のハイライトで確認できます。
+          </p>
+          <p>
+            <strong>こんな時に使います：</strong> AI が大量に変更を加えた後に「何が変わったか確認したい」、チームメンバーのコードをレビューする前に差分を確認したい、バグが混入したコミットを特定したい時。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />

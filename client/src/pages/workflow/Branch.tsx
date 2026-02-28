@@ -2,6 +2,7 @@ import { ArrowRight, GitBranch } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,21 @@ export default function BranchWorkflow() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="ブランチ = AI に「この機能だけ試して」と言える仕組み"
+          tags={['並行開発', 'AI 実験場', 'リスク分離', 'PR・レビュー']}
+        >
+          <p>
+            ブランチとは、プロジェクトの「作業コピー」を作る機能です。本番のコードを壊さずに、新しい機能を試せます。<strong>例えるなら、Photoshop のレイヤー</strong>のようなもの—元の画像（main）を残したまま、別レイヤーで試行錯誤できます。
+          </p>
+          <p>
+            AI に「新しいヘッダーデザインを実装して」と頼む時、ブランチを切ってから依頼すれば、気に入らなければブランチごと捨てられます。本番環境への影響ゼロで<strong>AI との実験を繰り返せる</strong>のがブランチの最大の価値です。
+          </p>
+          <p>
+            <strong>こんな時に使います：</strong> 新機能を追加する前、バグ修正を試みる時、AI に大きな変更を依頼する時。「とりあえず試してみる」文化を支える仕組みです。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />
@@ -50,6 +66,11 @@ export default function BranchWorkflow() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               ブランチは、プロジェクトの「分岐」です。メインの開発ラインから分岐させて、新しい機能を開発したり、バグを修正したりできます。複数人での開発時に、互いに影響を与えずに作業できます。
             </p>
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+              <p className="text-sm text-foreground/80">
+                <strong>🌿 例えるなら：</strong> Word の「名前を付けて保存」で別ファイルを作るイメージです。ただし Git のブランチは、元のファイルとの「差分」だけを管理するので容量を食わず、後からきれいにマージ（合体）できます。
+              </p>
+            </div>
 
             <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
               <h3 className="font-semibold text-foreground mb-3">ブランチのメリット</h3>

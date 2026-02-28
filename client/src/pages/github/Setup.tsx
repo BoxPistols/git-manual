@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,21 @@ export default function GitSetup() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="「誰が」変更したかを記録する仕組みがなぜ必要か"
+          tags={['チーム開発', 'AI との協働', 'トレーサビリティ']}
+        >
+          <p>
+            AI がコードを書く時代になっても、「この変更は誰（またはどのAI）がいつ加えたのか」を追跡できることは非常に重要です。Git のユーザー情報設定は、その変更履歴に<strong>あなたの名前を刻む</strong>ための設定です。
+          </p>
+          <p>
+            SSH キーは「鍵と鍵穴」の仕組みです。GitHub に鍵穴（公開鍵）を登録し、あなたのパソコンが鍵（秘密鍵）を持つことで、毎回パスワードを入力しなくても安全に接続できます。スマートロックのようなイメージです。
+          </p>
+          <p>
+            <strong>こんな時に使います：</strong> Cursor や Claude Code などの AI ツールが自動で Push する際も、このユーザー情報と SSH 設定が必要になります。一度設定すれば半永久的に有効です。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />

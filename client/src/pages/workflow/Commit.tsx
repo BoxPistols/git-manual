@@ -2,6 +2,7 @@ import { ArrowRight, GitBranch } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,21 @@ export default function CommitWorkflow() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="Commit = AI との作業の「セーブポイント」"
+          tags={['変更管理', 'AI 協働', 'やり直し保険', 'チーム開発']}
+        >
+          <p>
+            ゲームで「ここまでセーブしておこう」と思う瞬間がありますよね。Commit はまさにそれです。AI にコードを書いてもらいながら進める時、<strong>うまくいった時点でセーブ（Commit）しておく</strong>ことで、後で失敗しても戻れる安心感が生まれます。
+          </p>
+          <p>
+            Commit には「いつ・誰が・何を変えたか」というメモ（コミットメッセージ）が付きます。「AIがナビバーを追加」「デザインをレビュー後に修正」など記録しておくと、1ヶ月後の自分（やチームメンバー）が非常に助かります。
+          </p>
+          <p>
+            <strong>こんな時に使います：</strong> 1つの機能が完成したとき、AIに何かを頼む前後、レビューを依頼する前。「区切り」のたびに Commit する習慣をつけましょう。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />
@@ -50,6 +66,11 @@ export default function CommitWorkflow() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               Commit は、ファイルの変更を Git に記録する操作です。「保存」ボタンを押すのと似ていますが、Git では変更内容とメッセージを一緒に記録します。これにより、後で「いつ、誰が、何を変更したか」を確認できます。
             </p>
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+              <p className="text-sm text-foreground/80">
+                <strong>🎮 例えるなら：</strong> ゲームのセーブポイントです。Ctrl+S（ファイル保存）は「一時的な保存」、Commit は「ゲームを進めてから "ここまで進んだ" と記録するセーブ」。Commit しておけば、後でどんな状態にも戻れます。
+              </p>
+            </div>
 
             <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
               <h3 className="font-semibold text-foreground mb-3">Commit のメリット</h3>
@@ -144,9 +165,10 @@ export default function CommitWorkflow() {
                   1
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-1">git add</h4>
+                  <h4 className="font-semibold text-foreground mb-1">git add（ステージング）</h4>
                   <p className="text-muted-foreground text-sm">
-                    変更したファイルを「ステージング」します。これは、どのファイルを Commit するかを指定する操作です。
+                    変更したファイルを「ステージング」します。これは、どのファイルを Commit するかを指定する操作です。<br />
+                    <span className="text-foreground/60 text-xs">📦 例えるなら：宅配便で送る荷物を段ボールに入れる作業です。入れたものだけが次のステップ（Commit）で送られます。</span>
                   </p>
                 </div>
               </div>

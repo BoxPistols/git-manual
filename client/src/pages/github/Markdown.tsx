@@ -2,6 +2,7 @@ import { ArrowRight, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 
 /**
  * GitHub 基礎 - Markdown 入門
@@ -31,6 +32,20 @@ export default function MarkdownGuide() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="Markdown = AI・エンジニアとの「共通言語」"
+          tags={['README', 'AI プロンプト', 'GitHub 必須', 'Notion / Obsidian']}
+        >
+          <p>
+            Markdown を知っているだけで、GitHub 上のやり取りが一気にプロらしくなります。AI への指示、README の整備、Issue やコメントの書き方—すべてに Markdown が使われています。
+          </p>
+          <p>
+            <strong>例えるなら：</strong> メールで太字にしたい時、Word では Ctrl+B を押しますが、Markdown では `**太字**` と書くだけです。記号を覚えれば、どんなツールでも一瞬でキレイな文書が作れます。Notion・Obsidian・Slack でも同じルールが使えます。
+          </p>
+          <p>
+            <strong>こんな時に使います：</strong> GitHub の README を整える、AI へのプロンプトを構造化する、チームへの共有ドキュメントを素早く作る。5分で覚えて、一生使えるスキルです。
+          </p>
+        </WhyNowBox>
 
         {/* Why Markdown */}
         <section className="mb-12">

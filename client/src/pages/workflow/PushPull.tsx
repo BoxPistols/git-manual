@@ -2,6 +2,7 @@ import { ArrowRight, Upload, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,21 @@ export default function PushPull() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="Push / Pull = AI との成果物を世界と繋ぐ仕組み"
+          tags={['クラウド同期', 'チーム共有', 'バックアップ', 'AI ツール連携']}
+        >
+          <p>
+            Push は「ローカルの成果を GitHub に送る」、Pull は「GitHub の最新を手元に取り込む」操作です。たとえるなら、<strong>Push は Google Drive へのアップロード、Pull はダウンロード</strong>。ただしコードの差分を賢く管理してくれます。
+          </p>
+          <p>
+            AI ツール（Cursor・Claude Code など）は、Push されたコードを見てレビューしたり、自動でテストを走らせたりできます。Push した瞬間にチームの全員が最新版にアクセスできる—これが現代のチーム開発の基本です。
+          </p>
+          <p>
+            <strong>こんな時に使います：</strong> 「今日の作業をバックアップしたい」「エンジニアに最新版を見せたい」「別のパソコンでも作業したい」。すべて Push → Pull で解決します。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />

@@ -2,6 +2,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 
 /**
  * 環境準備 - 前提知識
@@ -31,6 +32,21 @@ export default function Prerequisites() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="なぜ今、エンジニアでなくてもこれを学ぶのか？"
+          tags={['AI 活用', 'デザイナー', 'ビジネス職', '副業・スタートアップ']}
+        >
+          <p>
+            ChatGPT や Claude に「このページを作って」と頼めばコードが出てくる時代になりました。でも、そのコードを<strong>どこに置くか・どう管理するか・チームにどう渡すか</strong>は、まだ人間の仕事です。
+          </p>
+          <p>
+            Git・GitHub・ターミナルは、AI が生成したコードを「本物のプロジェクト」に変えるための基盤です。一度覚えれば一生使えるスキルであり、エンジニアとの壁を取り払う共通言語になります。
+          </p>
+          <p>
+            <strong>たとえるなら：</strong> AI は優秀な料理人。Git はその料理を保存・管理する冷蔵庫と台帳です。料理人がいくら優秀でも、管理の仕組みがなければ繰り返し使えません。
+          </p>
+        </WhyNowBox>
+
         {/* What is Git? */}
         <section className="mb-12">
           <h2 className="text-3xl font-poppins font-bold text-foreground mb-6">
@@ -38,8 +54,13 @@ export default function Prerequisites() {
           </h2>
           <div className="bg-card border border-border rounded-lg p-8 space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Git は、ファイルの変更履歴を管理するツール（バージョン管理システム）です。デザインファイルや文書を作成する際に「最終版」「最終版_v2」「最終版_v3」と複数のファイルを作成してしまった経験はありませんか？Git を使うと、そのような混乱を避けることができます。
+              Git は、ファイルの変更履歴を管理するツール（バージョン管理システム）です。デザインファイルや文書を作成する際に「最終版」「最終版_v2」「最終版_v3_本当の最終」と複数のファイルを作成してしまった経験はありませんか？Git を使うと、そのような混乱を1つのファイルで解決できます。
             </p>
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+              <p className="text-sm text-foreground/80">
+                <strong>📁 こんな時に使います：</strong> AI に新機能を追加してもらったけど、うまくいかなかった。Git があれば「3日前の状態に戻して」と一瞬で元に戻せます。AI との試行錯誤を支える「やり直しボタン」です。
+              </p>
+            </div>
 
             <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
               <h3 className="font-semibold text-foreground mb-3">Git の主な機能</h3>
@@ -74,6 +95,11 @@ export default function Prerequisites() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               GitHub は、Git で管理されたプロジェクトをクラウド上に保存・共有するサービスです。Git はローカル（自分のパソコン）でファイル管理をしますが、GitHub はそれをインターネット上に保存することで、複数人での協力や、パソコンが壊れた時のバックアップが可能になります。
             </p>
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+              <p className="text-sm text-foreground/80">
+                <strong>🌐 こんな時に使います：</strong> デザイナーが Figma でデザインし、AI がコードを書き、それを GitHub に上げてエンジニアがレビューする。これが現代のチーム開発の流れです。GitHub は「コードの Google Drive」と思えば OK です。
+              </p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
@@ -101,6 +127,11 @@ export default function Prerequisites() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               ターミナル（コマンドラインインターフェース）は、マウスを使わずにキーボードでコンピュータに指示を出すツールです。Git や Node.js などの開発ツールはターミナルから操作することが多いため、基本的な使い方を理解しておくことが重要です。
             </p>
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+              <p className="text-sm text-foreground/80">
+                <strong>💡 例えるなら：</strong> 普段使う Mac/Windows の画面（Finder・エクスプローラー）は「絵で操作する方法（GUI）」。ターミナルは「言葉で直接命令する方法（CUI）」です。料理で言えば、レシピ本を見ながら作るか、口頭で指示するかの違いです。慣れると圧倒的に速くなります。
+              </p>
+            </div>
 
             <InfoBox type="info" title="ターミナルとは">
               ターミナルはテキストベースのインターフェースで、コマンドを入力して実行します。GUI（グラフィカルユーザーインターフェース）とは異なり、キーボードのみで操作します。

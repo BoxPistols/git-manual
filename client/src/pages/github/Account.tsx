@@ -1,6 +1,7 @@
 import { ArrowRight, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 
 /**
  * GitHub 基礎 - GitHub アカウント作成
@@ -29,6 +30,21 @@ export default function GitHubAccount() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="GitHub アカウントは「開発者のポートフォリオ」"
+          tags={['デジタル名刺', 'AI ツール連携', 'オープンソース']}
+        >
+          <p>
+            GitHub アカウントは、エンジニアにとっての LinkedIn や Behance のようなものです。「どんなプロジェクトを作ったか」「どれだけ継続して活動しているか」が一目でわかる<strong>デジタルポートフォリオ</strong>として機能します。
+          </p>
+          <p>
+            また、Cursor・Claude Code・Copilot など、AI コーディングツールの多くは GitHub アカウントと連携することで真価を発揮します。アカウントがないと、これらの恩恵を十分に受けられません。
+          </p>
+          <p>
+            <strong>例えるなら：</strong> GitHub アカウントは「デジタル世界の住所」。住所がないと荷物が届かないように、アカウントがないとコードも届け先がありません。
+          </p>
+        </WhyNowBox>
+
         {/* Why GitHub Account */}
         <section className="mb-12">
           <h2 className="text-3xl font-poppins font-bold text-foreground mb-6">
@@ -36,7 +52,7 @@ export default function GitHubAccount() {
           </h2>
           <div className="bg-card border border-border rounded-lg p-8 space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              GitHub アカウントがあれば、以下のことができるようになります：
+              GitHub アカウントがあれば、以下のことができるようになります。エンジニア専用のサービスに思えますが、実はデザイナーや企画職でも日常的に活用できる場面が増えています：
             </p>
 
             <div className="space-y-4">
@@ -184,7 +200,7 @@ export default function GitHubAccount() {
                 GitHub 上で使用するユーザー名を設定してください。このユーザー名は公開されます。
               </p>
               <InfoBox type="info">
-                ユーザー名は英数字とハイフン、アンダースコアのみ使用可能です。
+                ユーザー名は英数字とハイフン、アンダースコアのみ使用可能です。URL に表示されるので、本名またはブランド名に近いものを推奨します（例: yamada-taro, design-studio-x）。後から変更もできますが、URL が変わるため早めに決めた方が良いです。
               </InfoBox>
             </div>
 

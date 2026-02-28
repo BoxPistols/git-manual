@@ -2,6 +2,7 @@ import { ArrowRight, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -36,6 +37,21 @@ export default function FirstRepo() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+        <WhyNowBox
+          title="リポジトリ = AI との共同作業の「プロジェクトフォルダ」"
+          tags={['プロジェクト管理', 'バックアップ', 'チーム共有', 'GitHub Pages']}
+        >
+          <p>
+            リポジトリとは、プロジェクトのファイル一式と変更履歴をまとめて保存する場所です。Google Drive のフォルダに似ていますが、<strong>「誰がいつ何を変えたか」の履歴付き</strong>で、しかも過去に戻れます。
+          </p>
+          <p>
+            特にAI時代において重要なのは、AI が生成したコードを「リポジトリに入れた瞬間」からチーム全員がアクセスできるようになる点です。Slack でコードを貼るのではなく、GitHub のリンクを共有する—それが現代のスタンダードです。
+          </p>
+          <p>
+            <strong>こんな時に使います：</strong> 副業でサイトを作った、会社の LP を更新した、ポートフォリオを公開したい。リポジトリがあれば GitHub Pages で無料公開まで一直線です。
+          </p>
+        </WhyNowBox>
+
         {/* OS Toggle */}
         <div className="mb-12 flex justify-center">
           <OSToggle />
@@ -48,8 +64,13 @@ export default function FirstRepo() {
           </h2>
           <div className="bg-card border border-border rounded-lg p-8 space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              リポジトリは、プロジェクトのファイルと変更履歴を保存する場所です。フォルダのようなものと考えてください。GitHub 上のリポジトリをローカルにコピーすることで、自分のパソコンで開発できます。
+              リポジトリは、プロジェクトのファイルと変更履歴を保存する場所です。フォルダのようなものですが、ただのフォルダとは違い、<strong>すべての変更が時系列で記録され、どの時点にも戻れる</strong>という点が特徴です。GitHub 上のリポジトリをローカルにコピーすることで、自分のパソコンで開発できます。
             </p>
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+              <p className="text-sm text-foreground/80">
+                <strong>📚 例えるなら：</strong> Notion のページ履歴機能のようなもの。「1週間前のバージョンに戻す」が、プロジェクト全体のファイルに対してできるイメージです。
+              </p>
+            </div>
 
             <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
               <h3 className="font-semibold text-foreground mb-3">リポジトリの構成</h3>
