@@ -96,8 +96,13 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 md:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block mb-6 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20">
-            <span className="text-secondary font-medium text-sm">はじめての開発入門</span>
+          <div className="flex items-center justify-center gap-3 mb-6 flex-wrap">
+            <div className="inline-block px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20">
+              <span className="text-secondary font-medium text-sm">はじめての開発入門</span>
+            </div>
+            <div className="inline-block px-3 py-1.5 rounded-full bg-muted border border-border">
+              <span className="text-muted-foreground font-mono text-xs">v1.1.0</span>
+            </div>
           </div>
 
           <h1 className="text-5xl md:text-6xl font-poppins font-bold text-foreground mb-6 leading-tight">

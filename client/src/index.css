@@ -155,6 +155,11 @@
   }
 }
 
+.search-highlight { animation: search-pulse 2s ease-out; }
+@keyframes search-pulse { 0% { background-color: oklch(0.85 0.15 85); border-radius: 4px; } 100% { background-color: transparent; } }
+:is(.dark) .search-highlight { animation: search-pulse-dark 2s ease-out; }
+@keyframes search-pulse-dark { 0% { background-color: oklch(0.4 0.12 85); border-radius: 4px; } 100% { background-color: transparent; } }
+
 @layer components {
   /**
    * Custom container utility that centers content and adds responsive padding.

@@ -2,6 +2,7 @@ import { ArrowRight, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
@@ -66,13 +67,13 @@ export default function FirstRepo() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               リポジトリは、プロジェクトのファイルと変更履歴を保存する場所です。通常のフォルダと違い、ファイルを上書きしても以前のバージョンが履歴として残ります。GitHub 上のリポジトリをローカルにコピーすることで、自分のパソコンで作業できます。
             </p>
-            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded-r-lg">
               <p className="text-sm text-foreground/80">
                 <strong>例：</strong> Notion のページ履歴に近いです。「1週間前の状態に戻す」という操作が、プロジェクト全体のファイルに対してできます。
               </p>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">リポジトリの構成</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
@@ -411,6 +412,21 @@ export default function FirstRepo() {
               「your-repo-name」を実際のリポジトリ名に置き換えてください。アセットやリンクが正しく表示されます。
             </InfoBox>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="リポジトリのクローンと初回コミットを書いてみよう"
+            description="GitHub からリポジトリをクローンし、フォルダに移動して初回コミットするまでの流れを書いてください。"
+            initialCode={`# 1. リポジトリをクローン\n\n# 2. クローンしたフォルダに移動\n\n# 3. ファイルをステージング\n\n# 4. 初回コミット\n`}
+            answer={`# 1. リポジトリをクローン\ngit clone git@github.com:username/my-first-project.git\n\n# 2. クローンしたフォルダに移動\ncd my-first-project\n\n# 3. ファイルをステージング\ngit add .\n\n# 4. 初回コミット\ngit commit -m "Initial commit"`}
+            keywords={['git clone', 'cd', 'git add', 'git commit']}
+            hints={[
+              'git clone でリモートリポジトリをコピーします',
+              'cd でフォルダに移動、git add でステージング、git commit でコミット',
+            ]}
+          />
         </section>
 
         {/* Completion */}

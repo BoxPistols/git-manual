@@ -51,7 +51,7 @@ export default function ReactSetup() {
               React は、Facebook が開発した JavaScript ライブラリです。Web ページのインタラクティブな部分（ボタンをクリックしたときの動作など）を簡単に実装できます。
             </p>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">React の特徴</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
@@ -73,7 +73,7 @@ export default function ReactSetup() {
               </ul>
             </div>
 
-            <div className="bg-primary/5 border-l-4 border-primary p-6 rounded">
+            <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">このセクションの目的</h3>
               <p className="text-muted-foreground">
                 React の「ハローワールド」を作成することが目的ではなく、React プロジェクトを起動し、デザイン変更を行い、Git で管理することで、実際の開発体験を得ることです。

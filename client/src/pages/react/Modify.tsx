@@ -102,7 +102,7 @@ export default function ModifyReact() {
               </div>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <p className="text-muted-foreground">
                 これにより、Git での開発体験を得て、自信を持つことができます。
               </p>
@@ -421,7 +421,7 @@ export default function ModifyReact() {
               </div>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <p className="text-muted-foreground font-semibold">
                 これらのスキルは、実際のプロジェクト開発で即座に活用できます。継続して学習し、さらなるスキルアップを目指しましょう！
               </p>

@@ -57,13 +57,13 @@ export default function PromptEngineering() {
               AI は会話の流れから文脈を推測します。情報が散漫だと推測が必要な部分が増え、回答がズレやすくなります。構造化されていると、何を・どの形式で求めているかが明確になり、回答の精度が上がります。
             </p>
 
-            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded-r-lg">
               <p className="text-sm text-foreground/80">
                 <strong>例：</strong> 料理レシピを依頼するとき「和食で、魚を使って、20 分以内で、2 人前」と条件を列挙すると、「何か美味しいもの教えて」より的確な提案が返ってきます。
               </p>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">Markdown が役立つ場面</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
@@ -118,7 +118,7 @@ export default function PromptEngineering() {
                   />
                 </div>
                 <div className="flex items-start">
-                  <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded w-full text-sm text-foreground/80">
+                  <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded-r-lg w-full text-sm text-foreground/80">
                     <strong>使う場面：</strong> 専門的な説明が必要なとき、特定のトーンで書いてほしいとき（フォーマル・カジュアル）
                   </div>
                 </div>
@@ -146,7 +146,7 @@ export default function PromptEngineering() {
                   />
                 </div>
                 <div className="flex items-start">
-                  <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded w-full text-sm text-foreground/80">
+                  <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded-r-lg w-full text-sm text-foreground/80">
                     <strong>使う場面：</strong> 技術的な問題の相談、複数ステップの作業の途中、特定の制約がある場合
                   </div>
                 </div>
@@ -174,7 +174,7 @@ export default function PromptEngineering() {
                   />
                 </div>
                 <div className="flex items-start">
-                  <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded w-full text-sm text-foreground/80">
+                  <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded-r-lg w-full text-sm text-foreground/80">
                     <strong>注意：</strong> 「これ何とかして」より「原因を説明して」「修正後のコードを書いて」のように動詞を具体的にすると回答が絞られます
                   </div>
                 </div>
@@ -202,7 +202,7 @@ export default function PromptEngineering() {
                   />
                 </div>
                 <div className="flex items-start">
-                  <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded w-full text-sm text-foreground/80">
+                  <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded-r-lg w-full text-sm text-foreground/80">
                     <strong>使う場面：</strong> 長い回答が不要なとき、特定の構造で受け取りたいとき、コードだけほしいとき
                   </div>
                 </div>

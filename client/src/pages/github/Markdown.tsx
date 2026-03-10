@@ -2,6 +2,7 @@ import { ArrowRight, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import WhyNowBox from '@/components/WhyNowBox';
 
 /**
@@ -60,7 +61,7 @@ export default function MarkdownGuide() {
               Markdown は<strong className="text-foreground">テキストに簡単な記号を付けるだけで、見出し・リスト・リンク・コードブロックなどを表現できる軽量な書式ルール</strong>です。HTML のように複雑なタグを書く必要はなく、覚えるルールもごくわずかです。
             </p>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">Markdown を覚えるメリット</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
@@ -584,7 +585,7 @@ export default function MarkdownGuide() {
               GitHub が標準の Markdown を独自に拡張したものです。テーブル、チェックボックス、取り消し線、自動リンクなどの便利な機能が追加されています。GitHub 上では GFM が標準なので、このマニュアルで紹介した記法はすべて GitHub で使えます。
             </InfoBox>
 
-            <div className="bg-primary/5 border-l-4 border-primary p-6 rounded">
+            <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">覚えておきたいポイント</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
@@ -701,6 +702,22 @@ export default function MarkdownGuide() {
               </table>
             </div>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="Markdown で自己紹介を書いてみよう"
+            description="以下の要素を含む Markdown を書いてください：見出し（# または ##）、箇条書きリスト（- で始まる項目を2つ以上）、太字（**テキスト**）。内容は自由です。"
+            initialCode={`# \n\n- \n- `}
+            answer={`# 自己紹介\n\n**名前**: テスト太郎\n\n- Git を学習中\n- Markdown が書けるようになった`}
+            hints={[
+              '見出しは # の後にスペースを入れて書きます',
+              '箇条書きは - の後にスペースを入れて書きます',
+              '太字は **テキスト** のように、アスタリスク2つで囲みます',
+            ]}
+            keywords={['#', '-', '**']}
+          />
         </section>
 
         {/* Completion */}

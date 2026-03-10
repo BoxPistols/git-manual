@@ -2,6 +2,7 @@ import { ArrowRight, GitBranch } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
@@ -63,13 +64,13 @@ export default function BranchWorkflow() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               ブランチは、プロジェクトの「分岐」です。メインの開発ラインから分岐させて、新しい機能を開発したり、バグを修正したりできます。複数人での開発時に、互いに影響を与えずに作業できます。
             </p>
-            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded-r-lg">
               <p className="text-sm text-foreground/80">
                 <strong>例：</strong> Word の「名前を付けて保存」で別ファイルを作る操作に近いです。ただし Git のブランチは差分だけを管理するため、元のファイルのコピーではありません。作業が完了したら main に取り込めます（マージ）。
               </p>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">ブランチのメリット</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
@@ -91,7 +92,7 @@ export default function BranchWorkflow() {
               </ul>
             </div>
 
-            <div className="bg-primary/5 border-l-4 border-primary p-6 rounded">
+            <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">ブランチの例</h3>
               <p className="text-muted-foreground text-sm mb-3">
                 一般的なブランチ構成：
@@ -433,6 +434,22 @@ export default function BranchWorkflow() {
               />
             </div>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="ブランチ操作を書いてみよう"
+            description="「feature/dark-mode」という名前の新しいブランチを作成して、そのブランチに切り替えるコマンドを1行で書いてください。"
+            initialCode={`git `}
+            answer={`git checkout -b feature/dark-mode`}
+            hints={[
+              'ブランチの作成と切り替えを同時に行うオプションがあります',
+              'git checkout に -b オプションを付けると、作成と切り替えを同時にできます',
+              'git switch -c でも同じことができます',
+            ]}
+            keywords={['feature/dark-mode', '-b']}
+          />
         </section>
 
         {/* Completion */}

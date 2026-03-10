@@ -56,13 +56,13 @@ export default function Prerequisites() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               Git は、ファイルの変更履歴を管理するツール（バージョン管理システム）です。「最終版」「最終版_v2」「最終版_v3_本当の最終」のように複数のファイルを作ってしまう状況を、Git では1つのファイルで管理できます。
             </p>
-            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded-r-lg">
               <p className="text-sm text-foreground/80">
                 <strong>使用例：</strong> AI に変更を加えてもらったがうまくいかなかった場合、特定の時点のコードに戻せます。
               </p>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">Git の主な機能</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
@@ -95,7 +95,7 @@ export default function Prerequisites() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               GitHub は、Git で管理されたプロジェクトをクラウド上に保存・共有するサービスです。Git はローカル（自分のパソコン）でファイル管理をしますが、GitHub はそれをインターネット上に保存することで、複数人での協力や、パソコンが壊れた時のバックアップが可能になります。
             </p>
-            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded-r-lg">
               <p className="text-sm text-foreground/80">
                 <strong>使用例：</strong> Figma でデザインし、AI がコードを書き、GitHub でエンジニアに渡す。Google Drive にプロジェクトフォルダを置くのに近いイメージです。
               </p>
@@ -127,7 +127,7 @@ export default function Prerequisites() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               ターミナル（コマンドラインインターフェース）は、マウスを使わずにキーボードでコンピュータに指示を出すツールです。Git や Node.js などの開発ツールはターミナルから操作することが多いため、基本的な使い方を理解しておくことが重要です。
             </p>
-            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded-r-lg">
               <p className="text-sm text-foreground/80">
                 <strong>例：</strong> Finder やエクスプローラーをクリックして操作するのが GUI、ターミナルにコマンドを入力して操作するのが CUI です。どちらも同じ操作をしていますが、方法が違います。
               </p>

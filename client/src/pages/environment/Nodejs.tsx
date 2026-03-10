@@ -51,7 +51,7 @@ export default function NodejsInstall() {
               Node.js は、JavaScript をパソコンで実行できるようにするプログラムです。通常、JavaScript はブラウザ（Chrome や Safari）で実行されますが、Node.js を使うと、パソコン上で直接 JavaScript を実行できます。React を開発する際には、Node.js が必要です。
             </p>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">Node.js に含まれるもの</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
@@ -214,7 +214,7 @@ export default function NodejsInstall() {
               npm は、Node.js に付属するパッケージマネージャーです。React などのライブラリをインストール・管理するために使用します。
             </p>
 
-            <div className="bg-primary/5 border-l-4 border-primary p-6 rounded">
+            <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">npm の役割</h3>
               <p className="text-muted-foreground">
                 npm は、他の人が作成したコード（ライブラリ）をダウンロードして、自分のプロジェクトで使えるようにするツールです。React、Vue、Angular などのフレームワークも npm でインストールします。

@@ -397,7 +397,7 @@ export default function HistoryWorkflow() {
               </div>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <p className="text-muted-foreground">
                 セルフレビューを習慣づけることで、バグを減らし、より良いコードを書くことができます。
               </p>

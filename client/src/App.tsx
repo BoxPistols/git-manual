@@ -49,8 +49,10 @@ import CursorCline from "./pages/ai-agent/CursorCline";
 import SubTools from "./pages/ai-agent/SubTools";
 
 import KeyboardNav from "./components/KeyboardNav";
+import { useAutoHeadingIds } from "./hooks/useAutoHeadingIds";
 
 function Router() {
+  useAutoHeadingIds();
   return (
     <div className="flex">
       <Navigation />
