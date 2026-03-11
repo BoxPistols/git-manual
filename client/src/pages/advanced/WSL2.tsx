@@ -2,6 +2,7 @@ import { ArrowRight, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -233,6 +234,22 @@ wsl --install -d Ubuntu`}
                   />
                 </div>
               </div>
+            </section>
+
+            {/* コーディングチャレンジ */}
+            <section className="mb-12">
+              <CodingChallenge
+                title="WSL2 のインストールと確認コマンドを書いてみよう"
+                description="WSL2 に Ubuntu をインストールし、正しくインストールされたか確認するコマンドを書いてください。"
+                initialCode={`# 1. WSL2 に Ubuntu をインストール\n\n# 2. インストールされた WSL のバージョンを確認\n`}
+                answer={`# 1. WSL2 に Ubuntu をインストール\nwsl --install -d Ubuntu\n\n# 2. インストールされた WSL のバージョンを確認\nwsl --list --verbose`}
+                keywords={['wsl', '--install', '--list', '--verbose']}
+                hints={[
+                  'wsl --install -d でディストリビューションを指定してインストールします',
+                  'wsl --list --verbose でインストール済みのディストリビューションとバージョンを確認できます',
+                ]}
+                preview
+              />
             </section>
 
             {/* Next Steps */}

@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Code2, CheckCircle2, Lightbulb, RotateCcw, Eye, EyeOff } from 'lucide-react';
 import { buildMarkdownPreviewHtml, buildTerminalPreviewHtml } from '@/lib/preview';
+import { runCommands } from '@/lib/gitSimulator';
 
 interface CodingChallengeProps {
   title: string;
@@ -37,8 +38,12 @@ export default function CodingChallenge({ title, description, initialCode, answe
   useEffect(() => {
     if (!preview) return;
     const timer = setTimeout(() => {
-      const builder = previewType === 'markdown' ? buildMarkdownPreviewHtml : buildTerminalPreviewHtml;
-      setPreviewHtml(builder(code));
+      if (previewType === 'markdown') {
+        setPreviewHtml(buildMarkdownPreviewHtml(code));
+      } else {
+        const termOutput = runCommands(code);
+        setPreviewHtml(buildTerminalPreviewHtml(termOutput));
+      }
     }, 400);
     return () => clearTimeout(timer);
   }, [code, preview, previewType]);

@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -344,6 +345,23 @@ node app.js`}
               </InfoBox>
             </div>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="VSCode の統合ターミナルでコマンドを実行してみよう"
+            description="VSCode のターミナルで Git の状態確認と開発サーバーの起動コマンドを書いてください。"
+            initialCode={`# 1. Git の状態を確認\n\n# 2. 開発サーバーを起動\n\n# 3. VSCode でプロジェクトを開く\n`}
+            answer={`# 1. Git の状態を確認\ngit status\n\n# 2. 開発サーバーを起動\nnpm start\n\n# 3. VSCode でプロジェクトを開く\ncode .`}
+            keywords={['git status', 'npm start', 'code .']}
+            hints={[
+              'git status で変更ファイルの状態を確認します',
+              'npm start で開発サーバーを起動します',
+              'code . で現在のフォルダを VSCode で開きます',
+            ]}
+            preview
+          />
         </section>
 
         {/* Next Steps */}

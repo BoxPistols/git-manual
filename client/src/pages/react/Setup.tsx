@@ -2,6 +2,7 @@ import { ArrowRight, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -268,6 +269,22 @@ export default function ReactSetup() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="React プロジェクトの作成と起動コマンドを書いてみよう"
+            description="React プロジェクトを作成し、フォルダに移動して開発サーバーを起動するまでのコマンドを書いてください。"
+            initialCode={`# 1. React プロジェクトを作成\n\n# 2. プロジェクトフォルダに移動\n\n# 3. 開発サーバーを起動\n`}
+            answer={`# 1. React プロジェクトを作成\nnpx create-react-app my-react-app\n\n# 2. プロジェクトフォルダに移動\ncd my-react-app\n\n# 3. 開発サーバーを起動\nnpm start`}
+            keywords={['npx', 'create-react-app', 'cd', 'npm start']}
+            hints={[
+              'npx create-react-app でプロジェクトを作成します',
+              'cd でフォルダに移動してから npm start で起動します',
+            ]}
+            preview
+          />
         </section>
 
         {/* Next Steps */}

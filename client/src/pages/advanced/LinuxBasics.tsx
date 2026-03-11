@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 
 /**
  * 実践的な環境構築 - Linux/Ubuntu 基礎
@@ -292,6 +293,23 @@ chmod 755 file.txt      # 権限を数値で指定`}
               これらのコマンドが使えるようになれば、Linux の基本操作はマスターです！
             </InfoBox>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="Linux 基本コマンドで プロジェクトを作成してみよう"
+            description="フォルダを作成し、ファイルを追加して内容を確認するまでのコマンドを書いてください。"
+            initialCode={`# 1. my-project フォルダを作成\n\n# 2. my-project フォルダに移動\n\n# 3. README.md ファイルを作成\n\n# 4. README.md にテキストを書き込む\n\n# 5. README.md の内容を表示\n`}
+            answer={`# 1. my-project フォルダを作成\nmkdir my-project\n\n# 2. my-project フォルダに移動\ncd my-project\n\n# 3. README.md ファイルを作成\ntouch README.md\n\n# 4. README.md にテキストを書き込む\necho "# My Project" > README.md\n\n# 5. README.md の内容を表示\ncat README.md`}
+            keywords={['mkdir', 'cd', 'touch', 'echo', 'cat']}
+            hints={[
+              'mkdir でフォルダ作成、cd で移動します',
+              'touch で空ファイル作成、echo "テキスト" > ファイル名 で書き込みます',
+              'cat でファイルの内容を表示できます',
+            ]}
+            preview
+          />
         </section>
 
         {/* Next Steps */}

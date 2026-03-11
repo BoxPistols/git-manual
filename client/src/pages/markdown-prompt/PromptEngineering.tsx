@@ -2,6 +2,7 @@ import { ArrowRight, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import WhyNowBox from '@/components/WhyNowBox';
 
 /**
@@ -364,6 +365,24 @@ export default function PromptEngineering() {
               Cursor（コードエディタ）のチャット機能も同じ考え方が使えます。コードを選択して「このコードについて質問」すると、自動でコードブロックに変換されます。役割・文脈・タスクを意識して指示すると、より的確なコード補助が得られます。
             </InfoBox>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="構造化されたプロンプトを書いてみよう"
+            description="以下の要素を含む AI への指示を Markdown で書いてください：見出し（## で状況・質問などのセクション分け）、箇条書き（条件や要件の列挙）、コードブロック（エラーメッセージやコードの引用）。テーマは自由です。"
+            initialCode={`## 状況\n\n\n## 質問\n\n`}
+            answer={`## 状況\n- React プロジェクトを開発中\n- git push を実行したらエラーが発生した\n\n## エラーメッセージ\n\`\`\`\nfatal: Authentication failed\n\`\`\`\n\n## 質問\nこのエラーの原因と対処方法を教えてください。`}
+            hints={[
+              '## で見出しを作ってセクションを分けましょう',
+              '箇条書き（-）で状況や条件を整理しましょう',
+              'コードブロック（```）でエラーメッセージを囲みましょう',
+            ]}
+            keywords={['##', '-', '```']}
+            preview
+            previewType="markdown"
+          />
         </section>
 
         {/* Completion */}

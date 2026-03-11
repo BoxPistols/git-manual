@@ -2,6 +2,7 @@ import { ChevronLeft, CheckCircle, Sparkles, Terminal, Globe } from 'lucide-reac
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -311,6 +312,22 @@ gemini`}
               どちらにしても<strong>月1,000円以下</strong>で、本格的な AI コーディング環境が手に入ります。
             </InfoBox>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="Gemini CLI のインストールと起動コマンドを書いてみよう"
+            description="Gemini CLI をインストールして起動するまでのコマンドを書いてください。"
+            initialCode={`# 1. Gemini CLI をグローバルインストール\n\n# 2. Gemini CLI を起動\n`}
+            answer={`# 1. Gemini CLI をグローバルインストール\nnpm install -g @google/gemini-cli\n\n# 2. Gemini CLI を起動\ngemini`}
+            keywords={['npm install -g', 'gemini-cli', 'gemini']}
+            hints={[
+              'npm install -g @google/gemini-cli でグローバルインストールします',
+              'gemini コマンドで起動します（初回はブラウザで Google 認証）',
+            ]}
+            preview
+          />
         </section>
 
         {/* まとめ */}

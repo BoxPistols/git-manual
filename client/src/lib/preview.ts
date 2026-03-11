@@ -71,10 +71,11 @@ try {
 }
 
 /**
- * ターミナル風のコマンド表示プレビューHTML
+ * ターミナル風のシミュレーター出力プレビューHTML
+ * runCommands() の出力を受け取って表示する
  */
-export function buildTerminalPreviewHtml(commands: string): string {
-  const jsonContent = JSON.stringify(commands);
+export function buildTerminalPreviewHtml(output: string): string {
+  const jsonOutput = JSON.stringify(output);
   return `<!DOCTYPE html>
 <html>
 <head>
@@ -90,38 +91,26 @@ export function buildTerminalPreviewHtml(commands: string): string {
     line-height: 1.7;
   }
   .prompt { color: #a6e3a1; }
-  .comment { color: #6c7086; font-style: italic; }
-  .command { color: #89b4fa; }
-  .flag { color: #f9e2af; }
-  .string { color: #a6e3a1; }
-  .output { color: #9399b2; padding-left: 0; }
-  .line { margin: 2px 0; }
+  .cmd { color: #89b4fa; }
+  .error { color: #f38ba8; }
+  .dim { color: #6c7086; font-style: italic; }
+  .highlight { color: #f9e2af; }
+  .green { color: #a6e3a1; }
 </style>
 </head>
 <body>
-<div id="terminal"></div>
+<pre id="terminal"></pre>
 <script>
-function renderTerminal(text) {
-  var lines = text.split('\\n');
-  return lines.map(function(line) {
-    var trimmed = line.trim();
-    if (!trimmed) return '<div class="line">&nbsp;</div>';
-    if (trimmed.startsWith('#')) return '<div class="line comment">' + trimmed + '</div>';
-    if (trimmed.startsWith('git ') || trimmed.startsWith('cd ') || trimmed.startsWith('mkdir ') || trimmed.startsWith('touch ') || trimmed.startsWith('echo ') || trimmed.startsWith('npm ') || trimmed.startsWith('npx ') || trimmed.startsWith('curl ')) {
-      var parts = trimmed.split(' ');
-      var cmdLen = trimmed.startsWith('git') ? 2 : 1;
-      var cmd = parts.slice(0, cmdLen).join(' ');
-      var rest = parts.slice(cmdLen).map(function(p) {
-        if (p.startsWith('-')) return '<span class="flag">' + p + '</span>';
-        if (p.startsWith('"') || p.startsWith("'")) return '<span class="string">' + p + '</span>';
-        return p;
-      }).join(' ');
-      return '<div class="line"><span class="prompt">$ </span><span class="command">' + cmd + '</span> ' + rest + '</div>';
-    }
-    return '<div class="line output">' + trimmed + '</div>';
-  }).join('');
-}
-document.getElementById('terminal').innerHTML = renderTerminal(${jsonContent});
+var raw = ${jsonOutput};
+var html = raw
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/\\x1b\\[32m(.*?)\\x1b\\[0m/g, '<span class="prompt">$1</span>')
+  .replace(/\\x1b\\[90m(.*?)\\x1b\\[0m/g, '<span class="dim">$1</span>')
+  .replace(/(fatal:.*)/g, '<span class="error">$1</span>')
+  .replace(/(error:.*)/g, '<span class="error">$1</span>')
+  .replace(/(\\$ )(git \\S+)/g, '$1<span class="cmd">$2</span>')
+  .replace(/(\\$ )(ssh\\S*|npm|npx|node|brew|gh|claude|gemini|wsl|sudo|apt|chmod|mkdir|touch|echo|cat|ls|cd|pwd|rm|cp|mv|nano|code|cursor|source)/g, '$1<span class="cmd">$2</span>');
+document.getElementById('terminal').innerHTML = html;
 <\/script>
 </body>
 </html>`;

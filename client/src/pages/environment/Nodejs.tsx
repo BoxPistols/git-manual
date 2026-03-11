@@ -2,6 +2,7 @@ import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -221,6 +222,22 @@ export default function NodejsInstall() {
               </p>
             </div>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="Node.js と npm のバージョン確認コマンドを書いてみよう"
+            description="Node.js と npm がインストールされたか確認するためのコマンドを書いてください。"
+            initialCode={`# Node.js のバージョンを確認\n\n# npm のバージョンを確認\n`}
+            answer={`# Node.js のバージョンを確認\nnode --version\n\n# npm のバージョンを確認\nnpm --version`}
+            keywords={['node', '--version', 'npm']}
+            hints={[
+              'node コマンドに --version オプションを付けます',
+              'npm も同じく --version オプションでバージョンを確認できます',
+            ]}
+            preview
+          />
         </section>
 
         {/* Completion */}

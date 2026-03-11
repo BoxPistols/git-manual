@@ -3,6 +3,7 @@ import StepIndicator from '@/components/StepIndicator';
 import OSToggle from '@/components/OSToggle';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -274,6 +275,22 @@ git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519"`}
               >
                 パスワードを求められずにリポジトリがクローンされれば、SSH 接続は完全に機能しています。
               </InfoBox>
+            </section>
+            {/* コーディングチャレンジ */}
+            <section className="mt-12">
+              <CodingChallenge
+                title="SSH キーの生成と接続テストコマンドを書いてみよう"
+                description="WSL2 で SSH キーを生成し、GitHub への接続をテストするコマンドを書いてください。"
+                initialCode={`# 1. SSH キーを生成（ed25519 方式）\n\n# 2. 公開キーの内容を表示\n\n# 3. GitHub への SSH 接続をテスト\n`}
+                answer={`# 1. SSH キーを生成（ed25519 方式）\nssh-keygen -t ed25519 -C "your-email@example.com"\n\n# 2. 公開キーの内容を表示\ncat ~/.ssh/id_ed25519.pub\n\n# 3. GitHub への SSH 接続をテスト\nssh -T git@github.com`}
+                keywords={['ssh-keygen', 'ed25519', 'cat', 'id_ed25519.pub', 'ssh -T']}
+                hints={[
+                  'ssh-keygen -t ed25519 -C でメールアドレス付きの SSH キーを生成します',
+                  'cat ~/.ssh/id_ed25519.pub で公開キーを表示します',
+                  'ssh -T git@github.com で GitHub への接続をテストします',
+                ]}
+                preview
+              />
             </section>
           </div>
         )}
