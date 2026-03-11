@@ -717,6 +717,8 @@ export default function MarkdownGuide() {
               '太字は **テキスト** のように、アスタリスク2つで囲みます',
             ]}
             keywords={['#', '-', '**']}
+            preview
+            previewType="markdown"
           />
         </section>
 

@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Code2, CheckCircle2, Lightbulb, RotateCcw, Eye, EyeOff } from 'lucide-react';
+import { buildMarkdownPreviewHtml, buildTerminalPreviewHtml } from '@/lib/preview';
 
 interface CodingChallengeProps {
   title: string;
@@ -8,6 +9,8 @@ interface CodingChallengeProps {
   answer: string;
   hints?: string[];
   keywords?: string[];
+  preview?: boolean;
+  previewType?: 'markdown' | 'terminal';
 }
 
 function fuzzyCheck(code: string, answer: string, keywords?: string[]): boolean {
@@ -23,12 +26,32 @@ function fuzzyCheck(code: string, answer: string, keywords?: string[]): boolean 
   return matchCount >= Math.ceil(answerLines.length * 0.5);
 }
 
-export default function CodingChallenge({ title, description, initialCode, answer, hints = [], keywords }: CodingChallengeProps) {
+export default function CodingChallenge({ title, description, initialCode, answer, hints = [], keywords, preview = false, previewType = 'terminal' }: CodingChallengeProps) {
   const [code, setCode] = useState(initialCode);
   const [showAnswer, setShowAnswer] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [hintIndex, setHintIndex] = useState(0);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [previewHtml, setPreviewHtml] = useState('');
+
+  useEffect(() => {
+    if (!preview) return;
+    const timer = setTimeout(() => {
+      const builder = previewType === 'markdown' ? buildMarkdownPreviewHtml : buildTerminalPreviewHtml;
+      setPreviewHtml(builder(code));
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [code, preview, previewType]);
+
+  const blobUrl = useMemo(() => {
+    if (!previewHtml) return '';
+    const blob = new Blob([previewHtml], { type: 'text/html' });
+    return URL.createObjectURL(blob);
+  }, [previewHtml]);
+
+  useEffect(() => {
+    return () => { if (blobUrl) URL.revokeObjectURL(blobUrl); };
+  }, [blobUrl]);
 
   const handleCheck = () => setIsCorrect(fuzzyCheck(code, answer, keywords));
   const handleNextHint = () => { if (hintIndex < hints.length - 1) setHintIndex((prev) => prev + 1); setShowHint(true); };
@@ -42,14 +65,33 @@ export default function CodingChallenge({ title, description, initialCode, answe
       </div>
       <h4 className="text-lg font-semibold text-foreground mb-2">{title}</h4>
       <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{description}</p>
-      <div className="rounded-lg overflow-hidden border border-border bg-[#1e1e2e] mb-4">
-        <div className="flex items-center justify-between px-4 py-2 bg-[#181825] border-b border-[#313244]">
-          <span className="text-xs font-mono text-[#cdd6f4]/60 uppercase">エディタ</span>
+      {preview ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="rounded-lg overflow-hidden border border-border bg-[#1e1e2e]">
+            <div className="flex items-center justify-between px-4 py-2 bg-[#181825] border-b border-[#313244]">
+              <span className="text-xs font-mono text-[#cdd6f4]/60 uppercase">エディタ</span>
+            </div>
+            <textarea value={code} onChange={(e) => { setCode(e.target.value); setIsCorrect(null); }} spellCheck={false} wrap="off"
+              className="w-full p-4 font-mono text-sm leading-relaxed bg-transparent text-[#cdd6f4] resize-none focus:outline-none min-h-[160px] overflow-auto whitespace-pre"
+              rows={Math.max(6, code.split('\n').length + 1)} />
+          </div>
+          <div className="relative rounded-lg overflow-hidden border border-border" style={{ minHeight: '256px' }}>
+            <div className="absolute top-2 right-2 text-xs text-muted-foreground z-10 bg-background/80 px-2 py-0.5 rounded">プレビュー</div>
+            {blobUrl && (
+              <iframe src={blobUrl} className="w-full h-full border-0" style={{ minHeight: '256px' }} sandbox="allow-scripts" title="プレビュー" />
+            )}
+          </div>
         </div>
-        <textarea value={code} onChange={(e) => { setCode(e.target.value); setIsCorrect(null); }} spellCheck={false} wrap="off"
-          className="w-full p-4 font-mono text-sm leading-relaxed bg-transparent text-[#cdd6f4] resize-none focus:outline-none min-h-[160px] overflow-auto whitespace-pre"
-          rows={Math.max(6, code.split('\n').length + 1)} />
-      </div>
+      ) : (
+        <div className="rounded-lg overflow-hidden border border-border bg-[#1e1e2e] mb-4">
+          <div className="flex items-center justify-between px-4 py-2 bg-[#181825] border-b border-[#313244]">
+            <span className="text-xs font-mono text-[#cdd6f4]/60 uppercase">エディタ</span>
+          </div>
+          <textarea value={code} onChange={(e) => { setCode(e.target.value); setIsCorrect(null); }} spellCheck={false} wrap="off"
+            className="w-full p-4 font-mono text-sm leading-relaxed bg-transparent text-[#cdd6f4] resize-none focus:outline-none min-h-[160px] overflow-auto whitespace-pre"
+            rows={Math.max(6, code.split('\n').length + 1)} />
+        </div>
+      )}
       {isCorrect !== null && (
         <div className={`flex items-center gap-2 px-4 py-2.5 rounded-lg mb-4 ${isCorrect ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' : 'bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300'}`}>
           {isCorrect ? (<><CheckCircle2 size={18} /><span className="text-sm font-semibold">正解！素晴らしい！</span></>) : (<><Code2 size={18} /><span className="text-sm font-semibold">もう少し！ヒントを確認してみましょう。</span></>)}

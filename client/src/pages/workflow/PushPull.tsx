@@ -345,6 +345,7 @@ export default function PushPull() {
               'git add でステージング、git commit -m でコミットします',
               'git push origin main で GitHub に送信、git pull origin main で取得します',
             ]}
+            preview
           />
         </section>
 

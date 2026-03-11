@@ -449,6 +449,7 @@ export default function BranchWorkflow() {
               'git switch -c でも同じことができます',
             ]}
             keywords={['feature/dark-mode', '-b']}
+            preview
           />
         </section>
 

@@ -426,6 +426,7 @@ export default function FirstRepo() {
               'git clone でリモートリポジトリをコピーします',
               'cd でフォルダに移動、git add でステージング、git commit でコミット',
             ]}
+            preview
           />
         </section>
 

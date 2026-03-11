@@ -340,6 +340,7 @@ export default function CommitWorkflow() {
               '「Update」「Fix」「Add」などの動詞で始めると読みやすくなります',
             ]}
             keywords={['git commit', '-m', '"']}
+            preview
           />
         </section>
 

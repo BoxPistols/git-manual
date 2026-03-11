@@ -350,6 +350,8 @@ pnpm dev`}
               '箇条書き（-）でルールを列挙すると Claude が理解しやすくなります',
             ]}
             keywords={['#', '##', '-']}
+            preview
+            previewType="markdown"
           />
         </section>
 
