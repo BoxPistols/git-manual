@@ -5,14 +5,14 @@ export default defineConfig({
   timeout: 30_000,
   retries: 0,
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:3300',
     headless: true,
     // 各テストでクリーンなコンテキストを使用
     storageState: undefined,
   },
   webServer: {
     command: 'pnpm dev',
-    port: 3000,
+    port: 3300,
     reuseExistingServer: true,
     timeout: 15_000,
   },
