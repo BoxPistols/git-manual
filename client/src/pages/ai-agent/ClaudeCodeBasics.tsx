@@ -2,6 +2,7 @@ import { ArrowRight, ChevronLeft, FolderGit2, GitBranch, Eye, CheckCircle, Refre
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -334,6 +335,24 @@ pnpm dev`}
               <li><code className="bg-muted px-1.5 py-0.5 rounded text-sm">/exit</code> で Claude Code を終了する</li>
             </ol>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="CLAUDE.md を書いてみよう"
+            description="Claude Code がプロジェクトのルールを認識するための CLAUDE.md ファイルを書いてください。プロジェクト名、使用言語、コミットメッセージのルールを含めましょう。"
+            initialCode={`# プロジェクト名\n\n## 基本方針\n\n`}
+            answer={`# My Project\n\n## 基本方針\n\n- 言語: 日本語でコミュニケーション\n- TypeScript を使用\n\n## Git ワークフロー\n\n- コミットメッセージは日本語で簡潔に\n- push 前に必ずビルド確認`}
+            hints={[
+              'CLAUDE.md は Markdown 形式で書きます',
+              '見出し（##）でセクションを分けましょう',
+              '箇条書き（-）でルールを列挙すると Claude が理解しやすくなります',
+            ]}
+            keywords={['#', '##', '-']}
+            preview
+            previewType="markdown"
+          />
         </section>
 
         {/* まとめ */}

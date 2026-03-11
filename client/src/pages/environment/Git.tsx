@@ -2,6 +2,7 @@ import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -239,6 +240,22 @@ export default function GitInstall() {
               />
             </div>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="Git の初期設定コマンドを書いてみよう"
+            description="Git をインストールした後に実行する、ユーザー名とメールアドレスの設定コマンドを書いてください。名前は「Taro」、メールは「taro@example.com」とします。"
+            initialCode={`# ユーザー名を設定\n\n# メールアドレスを設定\n`}
+            answer={`# ユーザー名を設定\ngit config --global user.name "Taro"\n\n# メールアドレスを設定\ngit config --global user.email "taro@example.com"`}
+            keywords={['git config', '--global', 'user.name', 'user.email']}
+            hints={[
+              'git config --global でグローバル設定ができます',
+              'user.name と user.email をそれぞれ設定します',
+            ]}
+            preview
+          />
         </section>
 
         {/* Next Steps */}

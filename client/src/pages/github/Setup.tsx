@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
@@ -251,6 +252,22 @@ export default function GitSetup() {
               </ul>
             </div>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="SSH キー生成と接続確認のコマンドを書いてみよう"
+            description="SSH キーを生成するコマンドと、GitHub への接続を確認するコマンドを書いてください。メールアドレスは「taro@example.com」とします。"
+            initialCode={`# 1. SSH キーを生成\n\n# 2. GitHub への接続確認\n`}
+            answer={`# 1. SSH キーを生成\nssh-keygen -t ed25519 -C "taro@example.com"\n\n# 2. GitHub への接続確認\nssh -T git@github.com`}
+            keywords={['ssh-keygen', 'ed25519', 'ssh -T', 'git@github.com']}
+            hints={[
+              'ssh-keygen コマンドで鍵を生成します。-t で鍵の種類を指定します',
+              'ssh -T git@github.com で GitHub への接続をテストできます',
+            ]}
+            preview
+          />
         </section>
 
         {/* Next Steps */}

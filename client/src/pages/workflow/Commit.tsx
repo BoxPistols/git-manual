@@ -2,6 +2,7 @@ import { ArrowRight, GitBranch } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
@@ -66,13 +67,13 @@ export default function CommitWorkflow() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               Commit は、ファイルの変更を Git に記録する操作です。「保存」ボタンを押すのと似ていますが、Git では変更内容とメッセージを一緒に記録します。これにより、後で「いつ、誰が、何を変更したか」を確認できます。
             </p>
-            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded">
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-400 p-4 rounded-r-lg">
               <p className="text-sm text-foreground/80">
                 <strong>例：</strong> ゲームのセーブポイントに近い考え方です。Ctrl+S はファイルを上書き保存しますが、Commit はその時点の状態を履歴として残します。後から特定の Commit に戻すことができます。
               </p>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">Commit のメリット</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
@@ -261,7 +262,7 @@ export default function CommitWorkflow() {
 
               <div className="mt-6 space-y-4">
                 <h4 className="font-semibold text-foreground">コミットメッセージの書き方</h4>
-                <div className="bg-primary/5 border-l-4 border-primary p-4 rounded">
+                <div className="bg-primary/5 border-l-4 border-primary p-4 rounded-r-lg">
                   <p className="text-muted-foreground text-sm mb-3">
                     良いコミットメッセージの例：
                   </p>
@@ -272,7 +273,7 @@ export default function CommitWorkflow() {
                   </ul>
                 </div>
 
-                <div className="bg-destructive/5 border-l-4 border-destructive p-4 rounded">
+                <div className="bg-destructive/5 border-l-4 border-destructive p-4 rounded-r-lg">
                   <p className="text-muted-foreground text-sm mb-3">
                     避けるべきコミットメッセージの例：
                   </p>
@@ -324,6 +325,23 @@ export default function CommitWorkflow() {
               </InfoBox>
             </div>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="コミットメッセージを書いてみよう"
+            description="ナビゲーションバーの色をダークブルーに変更した場合の、適切なコミットメッセージを git commit コマンドとして書いてください。"
+            initialCode={`git commit -m ""`}
+            answer={`git commit -m "Update navbar color to dark blue"`}
+            hints={[
+              'git commit -m "メッセージ" の形式で書きます',
+              '何を変更したか（navbar color）を具体的に書きましょう',
+              '「Update」「Fix」「Add」などの動詞で始めると読みやすくなります',
+            ]}
+            keywords={['git commit', '-m', '"']}
+            preview
+          />
         </section>
 
         {/* Next Steps */}

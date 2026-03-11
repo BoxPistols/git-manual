@@ -2,6 +2,7 @@ import { ArrowRight, Upload, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import WhyNowBox from '@/components/WhyNowBox';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
@@ -65,7 +66,7 @@ export default function PushPull() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-primary/5 border-l-4 border-primary p-6 rounded">
+              <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
                 <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
                   <span className="text-2xl">💻</span>
                   ローカル
@@ -75,7 +76,7 @@ export default function PushPull() {
                 </p>
               </div>
 
-              <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+              <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
                 <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
                   <span className="text-2xl">☁️</span>
                   リモート
@@ -86,7 +87,7 @@ export default function PushPull() {
               </div>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">Push と Pull</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
@@ -324,12 +325,28 @@ export default function PushPull() {
               </div>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <p className="text-muted-foreground">
                 このサイクルを繰り返すことで、ローカルと GitHub を常に同期させることができます。
               </p>
             </div>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="Push と Pull の基本フローを書いてみよう"
+            description="ファイルを編集した後、ステージング・コミット・Push までの一連のコマンドと、別の環境で最新を取得する Pull コマンドを書いてください。"
+            initialCode={`# 1. 変更をステージング\n\n# 2. コミット\n\n# 3. GitHub に Push\n\n# 4. 別の環境で最新を Pull\n`}
+            answer={`# 1. 変更をステージング\ngit add .\n\n# 2. コミット\ngit commit -m "Update content"\n\n# 3. GitHub に Push\ngit push origin main\n\n# 4. 別の環境で最新を Pull\ngit pull origin main`}
+            keywords={['git add', 'git commit', 'git push', 'git pull']}
+            hints={[
+              'git add でステージング、git commit -m でコミットします',
+              'git push origin main で GitHub に送信、git pull origin main で取得します',
+            ]}
+            preview
+          />
         </section>
 
         {/* Next Steps */}

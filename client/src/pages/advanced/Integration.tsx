@@ -2,6 +2,7 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 
 /**
  * 実践的な環境構築 - 開発環境の統合確認
@@ -340,6 +341,23 @@ git commit -m "Initial commit: Add README"`}
               まずは Cursor で AI の助けを借りながら学習を進めることをお勧めします。慣れてきたら VSCode に移行するのも良いでしょう。
             </InfoBox>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="プロジェクト作成から Git 管理までの流れを書いてみよう"
+            description="フォルダ作成、Git 初期化、ファイル作成、コミットまでの一連のコマンドを書いてください。"
+            initialCode={`# 1. プロジェクトフォルダを作成して移動\n\n# 2. Git リポジトリを初期化\n\n# 3. README.md を作成して内容を書き込む\n\n# 4. ファイルをステージングしてコミット\n`}
+            answer={`# 1. プロジェクトフォルダを作成して移動\nmkdir my-first-project\ncd my-first-project\n\n# 2. Git リポジトリを初期化\ngit init\n\n# 3. README.md を作成して内容を書き込む\ntouch README.md\necho "# My First Project" > README.md\n\n# 4. ファイルをステージングしてコミット\ngit add README.md\ngit commit -m "Initial commit: Add README"`}
+            keywords={['mkdir', 'git init', 'touch', 'git add', 'git commit']}
+            hints={[
+              'mkdir でフォルダ作成、cd で移動します',
+              'git init でリポジトリを初期化します',
+              'git add と git commit -m でファイルを記録します',
+            ]}
+            preview
+          />
         </section>
 
         {/* Completion */}

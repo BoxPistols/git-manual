@@ -1,9 +1,12 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import { Link, useLocation } from 'wouter';
-import { ChevronDown, Menu, X, Search, Sun, Moon } from 'lucide-react';
+import { ChevronDown, Menu, X, Search, Sun, Moon, Bookmark } from 'lucide-react';
 import { pages, getPageByPath } from '@/lib/navigation';
+import { searchIndex } from '@/lib/searchIndex';
+import { toSlug } from '@/hooks/useAutoHeadingIds';
 import { useOS } from '@/contexts/OSContext';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useBookmarks } from '@/hooks/useBookmarks';
 import { searchShortcutLabel } from '@/lib/keyLabels';
 
 const sections = [
@@ -89,6 +92,7 @@ export default function Navigation() {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const { selectedOS } = useOS();
   const { theme, toggleTheme } = useTheme();
+  const { bookmarks } = useBookmarks();
   const isMac = selectedOS === 'mac';
   const [location] = useLocation();
 
@@ -113,11 +117,17 @@ export default function Navigation() {
   }, []);
 
   // 検索結果
-  const searchResults = searchQuery.trim()
-    ? pages.filter((p) =>
-        p.title.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : [];
+  const searchResults = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return [];
+    return pages.flatMap((p) => {
+      const titleMatch = p.title.toLowerCase().includes(q);
+      const keywords = searchIndex[p.path] ?? [];
+      const matchedKeywords = keywords.filter((kw) => kw.toLowerCase().includes(q));
+      if (!titleMatch && matchedKeywords.length === 0) return [];
+      return [{ ...p, matchedKeywords }];
+    });
+  }, [searchQuery]);
 
   const hasSearch = searchQuery.trim().length > 0;
 
@@ -179,26 +189,72 @@ export default function Navigation() {
                 </p>
               ) : (
                 searchResults.map((page) => (
-                  <Link
-                    key={page.path}
-                    href={page.path}
-                    onClick={() => {
-                      setIsOpen(false);
-                      setSearchQuery('');
-                    }}
-                    className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-sidebar-accent rounded-lg transition-colors"
-                  >
-                    <span className="text-xs text-primary font-semibold mr-1.5">
-                      STEP {page.step}
-                    </span>
-                    {page.title}
-                  </Link>
+                  <div key={page.path}>
+                    <Link
+                      href={page.matchedKeywords.length > 0 ? `${page.path}#${toSlug(page.matchedKeywords[0])}` : page.path}
+                      onClick={() => {
+                        setIsOpen(false);
+                        setSearchQuery('');
+                      }}
+                      className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-sidebar-accent rounded-lg transition-colors"
+                    >
+                      <span className="text-xs text-primary font-semibold mr-1.5">
+                        STEP {page.step}
+                      </span>
+                      {page.title}
+                    </Link>
+                    {page.matchedKeywords.length > 0 && (
+                      <div className="ml-6 space-y-0.5">
+                        {page.matchedKeywords.slice(0, 4).map((kw) => (
+                          <Link
+                            key={kw}
+                            href={`${page.path}#${toSlug(kw)}`}
+                            onClick={() => {
+                              setIsOpen(false);
+                              setSearchQuery('');
+                            }}
+                            className="block px-3 py-1 text-xs text-muted-foreground/70 hover:text-foreground hover:bg-sidebar-accent/50 rounded transition-colors"
+                          >
+                            # {kw}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))
               )}
             </div>
           ) : (
             /* 通常のセクションナビ */
             <div className="space-y-1">
+              {/* ブックマークセクション */}
+              {bookmarks.length > 0 && (
+                <div className="mb-3">
+                  <p className="px-4 py-1 text-xs font-semibold text-muted-foreground flex items-center gap-1.5">
+                    <Bookmark size={12} />
+                    ブックマーク
+                  </p>
+                  {bookmarks.map((path) => {
+                    const page = pages.find((p) => p.path === path);
+                    if (!page) return null;
+                    return (
+                      <Link
+                        key={path}
+                        href={path}
+                        onClick={() => setIsOpen(false)}
+                        className={`block px-4 py-1.5 text-sm rounded-lg transition-colors ${
+                          location === path
+                            ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 font-medium'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-sidebar-accent/50'
+                        }`}
+                      >
+                        {page.title}
+                      </Link>
+                    );
+                  })}
+                  <div className="my-2 mx-4 border-t border-sidebar-border" />
+                </div>
+              )}
               {sections.map((section) => (
                 <div key={section.id}>
                   {section.href ? (

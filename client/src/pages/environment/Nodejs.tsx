@@ -2,6 +2,7 @@ import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -51,7 +52,7 @@ export default function NodejsInstall() {
               Node.js は、JavaScript をパソコンで実行できるようにするプログラムです。通常、JavaScript はブラウザ（Chrome や Safari）で実行されますが、Node.js を使うと、パソコン上で直接 JavaScript を実行できます。React を開発する際には、Node.js が必要です。
             </p>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">Node.js に含まれるもの</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
@@ -214,13 +215,29 @@ export default function NodejsInstall() {
               npm は、Node.js に付属するパッケージマネージャーです。React などのライブラリをインストール・管理するために使用します。
             </p>
 
-            <div className="bg-primary/5 border-l-4 border-primary p-6 rounded">
+            <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">npm の役割</h3>
               <p className="text-muted-foreground">
                 npm は、他の人が作成したコード（ライブラリ）をダウンロードして、自分のプロジェクトで使えるようにするツールです。React、Vue、Angular などのフレームワークも npm でインストールします。
               </p>
             </div>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="Node.js と npm のバージョン確認コマンドを書いてみよう"
+            description="Node.js と npm がインストールされたか確認するためのコマンドを書いてください。"
+            initialCode={`# Node.js のバージョンを確認\n\n# npm のバージョンを確認\n`}
+            answer={`# Node.js のバージョンを確認\nnode --version\n\n# npm のバージョンを確認\nnpm --version`}
+            keywords={['node', '--version', 'npm']}
+            hints={[
+              'node コマンドに --version オプションを付けます',
+              'npm も同じく --version オプションでバージョンを確認できます',
+            ]}
+            preview
+          />
         </section>
 
         {/* Completion */}

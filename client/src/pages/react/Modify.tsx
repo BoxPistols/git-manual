@@ -2,6 +2,7 @@ import { ArrowRight, Palette } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -102,7 +103,7 @@ export default function ModifyReact() {
               </div>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <p className="text-muted-foreground">
                 これにより、Git での開発体験を得て、自信を持つことができます。
               </p>
@@ -421,12 +422,29 @@ export default function ModifyReact() {
               </div>
             </div>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <p className="text-muted-foreground font-semibold">
                 これらのスキルは、実際のプロジェクト開発で即座に活用できます。継続して学習し、さらなるスキルアップを目指しましょう！
               </p>
             </div>
           </div>
+        </section>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="React プロジェクトの Git ワークフローを書いてみよう"
+            description="ブランチを作成し、ファイルをステージング・コミットして、GitHub に Push するまでの一連のコマンドを書いてください。"
+            initialCode={`# 1. 新しいブランチを作成して切り替え\n\n# 2. 変更したファイルをステージング\n\n# 3. コミット\n\n# 4. GitHub に Push\n`}
+            answer={`# 1. 新しいブランチを作成して切り替え\ngit checkout -b feature/update-welcome-message\n\n# 2. 変更したファイルをステージング\ngit add src/App.js\n\n# 3. コミット\ngit commit -m "Update welcome message and styling"\n\n# 4. GitHub に Push\ngit push -u origin feature/update-welcome-message`}
+            keywords={['git checkout -b', 'git add', 'git commit', 'git push']}
+            hints={[
+              'git checkout -b でブランチ作成と切り替えを同時に行います',
+              'git add でファイルをステージング、git commit -m でコミットします',
+              'git push -u origin ブランチ名 で GitHub に Push します',
+            ]}
+            preview
+          />
         </section>
 
         {/* Completion */}

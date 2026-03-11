@@ -2,6 +2,7 @@ import { ArrowRight, ChevronLeft, Terminal, User, CreditCard, Download, CheckCir
 import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import OSToggle from '@/components/OSToggle';
 import { useOS } from '@/contexts/OSContext';
 
@@ -333,6 +334,23 @@ claude`}
             </p>
           </div>
         </div>
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="Claude Code のインストールと起動コマンドを書いてみよう"
+            description="Node.js のバージョン確認、Claude Code のインストール、バージョン確認、起動までのコマンドを書いてください。"
+            initialCode={`# 1. Node.js のバージョンを確認\n\n# 2. Claude Code をグローバルインストール\n\n# 3. Claude Code のバージョンを確認\n\n# 4. Claude Code を起動\n`}
+            answer={`# 1. Node.js のバージョンを確認\nnode --version\n\n# 2. Claude Code をグローバルインストール\nnpm install -g @anthropic-ai/claude-code\n\n# 3. Claude Code のバージョンを確認\nclaude --version\n\n# 4. Claude Code を起動\nclaude`}
+            keywords={['node --version', 'npm install -g', 'claude-code', 'claude --version', 'claude']}
+            hints={[
+              'node --version で Node.js のバージョンを確認します',
+              'npm install -g @anthropic-ai/claude-code でグローバルインストールします',
+              'claude --version でバージョン確認、claude で起動します',
+            ]}
+            preview
+          />
+        </section>
 
         {/* このページのまとめ */}
         <section className="mb-12">

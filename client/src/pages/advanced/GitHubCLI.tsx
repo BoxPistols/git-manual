@@ -2,6 +2,7 @@ import { useOS } from '@/contexts/OSContext';
 import OSToggle from '@/components/OSToggle';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
+import CodingChallenge from '@/components/CodingChallenge';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -481,6 +482,23 @@ alias gic='gh issue create'`}
             </section>
           </div>
         )}
+
+        {/* コーディングチャレンジ */}
+        <section className="mb-12">
+          <CodingChallenge
+            title="GitHub CLI でプルリクエストを作成・マージしてみよう"
+            description="GitHub CLI を使って、ブランチを Push し、プルリクエストを作成してマージするまでのコマンドを書いてください。"
+            initialCode={`# 1. GitHub CLI で認証\n\n# 2. ブランチを GitHub に Push\n\n# 3. プルリクエストを作成\n\n# 4. プルリクエストをマージ\n`}
+            answer={`# 1. GitHub CLI で認証\ngh auth login\n\n# 2. ブランチを GitHub に Push\ngit push origin feature/new-feature\n\n# 3. プルリクエストを作成\ngh pr create --title "新機能を追加" --body "この PR では新しい機能を追加しました。"\n\n# 4. プルリクエストをマージ\ngh pr merge --merge`}
+            keywords={['gh auth login', 'gh pr create', 'gh pr merge']}
+            hints={[
+              'gh auth login で GitHub CLI の認証を行います',
+              'gh pr create --title --body でプルリクエストを作成します',
+              'gh pr merge --merge でプルリクエストをマージします',
+            ]}
+            preview
+          />
+        </section>
 
         <div className="flex gap-4 mt-16 pt-8 border-t border-border">
           <Button

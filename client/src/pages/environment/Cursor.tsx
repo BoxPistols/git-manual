@@ -50,7 +50,7 @@ export default function CursorInstall() {
               Cursor は、AI を搭載した高機能なコードエディタです。コードの自動補完、エラーの自動修正、コードの説明など、AI がコーディングをサポートしてくれます。コーディング未経験でも、AI の助けを借りながら学習することができます。
             </p>
 
-            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded">
+            <div className="bg-secondary/5 border-l-4 border-secondary p-6 rounded-r-lg">
               <h3 className="font-semibold text-foreground mb-3">Cursor の特徴</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-3">
