@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import { Link, useLocation } from 'wouter';
-import { ChevronDown, Menu, X, Search, Sun, Moon } from 'lucide-react';
+import { ChevronDown, Menu, X, Search, Sun, Moon, Bookmark } from 'lucide-react';
 import { pages, getPageByPath } from '@/lib/navigation';
 import { searchIndex } from '@/lib/searchIndex';
 import { toSlug } from '@/hooks/useAutoHeadingIds';
 import { useOS } from '@/contexts/OSContext';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useBookmarks } from '@/hooks/useBookmarks';
 import { searchShortcutLabel } from '@/lib/keyLabels';
 
 const sections = [
@@ -91,6 +92,7 @@ export default function Navigation() {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const { selectedOS } = useOS();
   const { theme, toggleTheme } = useTheme();
+  const { bookmarks } = useBookmarks();
   const isMac = selectedOS === 'mac';
   const [location] = useLocation();
 
@@ -225,6 +227,34 @@ export default function Navigation() {
           ) : (
             /* 通常のセクションナビ */
             <div className="space-y-1">
+              {/* ブックマークセクション */}
+              {bookmarks.length > 0 && (
+                <div className="mb-3">
+                  <p className="px-4 py-1 text-xs font-semibold text-muted-foreground flex items-center gap-1.5">
+                    <Bookmark size={12} />
+                    ブックマーク
+                  </p>
+                  {bookmarks.map((path) => {
+                    const page = pages.find((p) => p.path === path);
+                    if (!page) return null;
+                    return (
+                      <Link
+                        key={path}
+                        href={path}
+                        onClick={() => setIsOpen(false)}
+                        className={`block px-4 py-1.5 text-sm rounded-lg transition-colors ${
+                          location === path
+                            ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 font-medium'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-sidebar-accent/50'
+                        }`}
+                      >
+                        {page.title}
+                      </Link>
+                    );
+                  })}
+                  <div className="my-2 mx-4 border-t border-sidebar-border" />
+                </div>
+              )}
               {sections.map((section) => (
                 <div key={section.id}>
                   {section.href ? (

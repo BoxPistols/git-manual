@@ -1,8 +1,16 @@
 /**
  * Markdownをプレビュー用HTMLに変換する
  */
-export function buildMarkdownPreviewHtml(markdown: string): string {
+export function buildMarkdownPreviewHtml(markdown: string, isDark = false): string {
   const jsonContent = JSON.stringify(markdown);
+  const bg = isDark ? '#1e1e2e' : '#fff';
+  const fg = isDark ? '#cdd6f4' : '#24292f';
+  const borderColor = isDark ? '#45475a' : '#d0d7de';
+  const codeBg = isDark ? '#313244' : '#f6f8fa';
+  const blockquoteColor = isDark ? '#a6adc8' : '#57606a';
+  const linkColor = isDark ? '#89b4fa' : '#0969da';
+  const thBg = isDark ? '#313244' : '#f6f8fa';
+  const errorColor = isDark ? '#f38ba8' : '#cf222e';
   return `<!DOCTYPE html>
 <html>
 <head>
@@ -12,31 +20,31 @@ export function buildMarkdownPreviewHtml(markdown: string): string {
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     padding: 16px;
-    color: #24292f;
-    background: #fff;
+    color: ${fg};
+    background: ${bg};
     font-size: 14px;
     line-height: 1.6;
   }
-  h1 { font-size: 1.8em; border-bottom: 1px solid #d0d7de; padding-bottom: 0.3em; margin-bottom: 16px; }
-  h2 { font-size: 1.4em; border-bottom: 1px solid #d0d7de; padding-bottom: 0.3em; margin: 24px 0 16px; }
+  h1 { font-size: 1.8em; border-bottom: 1px solid ${borderColor}; padding-bottom: 0.3em; margin-bottom: 16px; }
+  h2 { font-size: 1.4em; border-bottom: 1px solid ${borderColor}; padding-bottom: 0.3em; margin: 24px 0 16px; }
   h3 { font-size: 1.15em; margin: 24px 0 16px; }
   p { margin: 0 0 16px; }
   ul, ol { padding-left: 2em; margin: 0 0 16px; }
   li { margin: 4px 0; }
-  code { background: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
-  pre { background: #f6f8fa; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 0 0 16px; }
+  code { background: ${codeBg}; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+  pre { background: ${codeBg}; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 0 0 16px; }
   pre code { background: none; padding: 0; }
-  blockquote { border-left: 4px solid #d0d7de; padding: 0 16px; color: #57606a; margin: 0 0 16px; }
-  a { color: #0969da; text-decoration: none; }
+  blockquote { border-left: 4px solid ${borderColor}; padding: 0 16px; color: ${blockquoteColor}; margin: 0 0 16px; }
+  a { color: ${linkColor}; text-decoration: none; }
   a:hover { text-decoration: underline; }
   table { border-collapse: collapse; width: 100%; margin: 0 0 16px; }
-  th, td { border: 1px solid #d0d7de; padding: 6px 13px; }
-  th { background: #f6f8fa; font-weight: 600; }
+  th, td { border: 1px solid ${borderColor}; padding: 6px 13px; }
+  th { background: ${thBg}; font-weight: 600; }
   img { max-width: 100%; }
-  hr { border: none; border-top: 1px solid #d0d7de; margin: 24px 0; }
+  hr { border: none; border-top: 1px solid ${borderColor}; margin: 24px 0; }
   strong { font-weight: 600; }
   em { font-style: italic; }
-  #error { color: #cf222e; font-family: monospace; font-size: 13px; padding: 12px; }
+  #error { color: ${errorColor}; font-family: monospace; font-size: 13px; padding: 12px; }
 </style>
 </head>
 <body>
@@ -74,8 +82,16 @@ try {
  * ターミナル風のシミュレーター出力プレビューHTML
  * runCommands() の出力を受け取って表示する
  */
-export function buildTerminalPreviewHtml(output: string): string {
+export function buildTerminalPreviewHtml(output: string, isDark = true): string {
   const jsonOutput = JSON.stringify(output);
+  const bg = isDark ? '#1e1e2e' : '#f8f9fa';
+  const fg = isDark ? '#cdd6f4' : '#1e1e2e';
+  const promptColor = isDark ? '#a6e3a1' : '#16a34a';
+  const cmdColor = isDark ? '#89b4fa' : '#2563eb';
+  const errorColor = isDark ? '#f38ba8' : '#dc2626';
+  const dimColor = isDark ? '#6c7086' : '#9ca3af';
+  const highlightColor = isDark ? '#f9e2af' : '#d97706';
+  const greenColor = isDark ? '#a6e3a1' : '#16a34a';
   return `<!DOCTYPE html>
 <html>
 <head>
@@ -84,18 +100,18 @@ export function buildTerminalPreviewHtml(output: string): string {
   * { margin: 0; box-sizing: border-box; }
   body {
     font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, monospace;
-    background: #1e1e2e;
-    color: #cdd6f4;
+    background: ${bg};
+    color: ${fg};
     padding: 16px;
     font-size: 13px;
     line-height: 1.7;
   }
-  .prompt { color: #a6e3a1; }
-  .cmd { color: #89b4fa; }
-  .error { color: #f38ba8; }
-  .dim { color: #6c7086; font-style: italic; }
-  .highlight { color: #f9e2af; }
-  .green { color: #a6e3a1; }
+  .prompt { color: ${promptColor}; }
+  .cmd { color: ${cmdColor}; }
+  .error { color: ${errorColor}; }
+  .dim { color: ${dimColor}; font-style: italic; }
+  .highlight { color: ${highlightColor}; }
+  .green { color: ${greenColor}; }
 </style>
 </head>
 <body>

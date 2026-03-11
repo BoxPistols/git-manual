@@ -160,6 +160,22 @@
 :is(.dark) .search-highlight { animation: search-pulse-dark 2s ease-out; }
 @keyframes search-pulse-dark { 0% { background-color: oklch(0.4 0.12 85); border-radius: 4px; } 100% { background-color: transparent; } }
 
+/* フォントサイズ設定 */
+html.font-small {
+  font-size: 14px;
+}
+html.font-medium {
+  font-size: 16px;
+}
+html.font-large {
+  font-size: 18px;
+}
+
+/* ワイドレイアウト */
+.layout-wide .max-w-4xl {
+  max-width: 80rem;
+}
+
 @layer components {
   /**
    * Custom container utility that centers content and adds responsive padding.

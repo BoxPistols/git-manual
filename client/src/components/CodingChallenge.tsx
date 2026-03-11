@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { Code2, CheckCircle2, Lightbulb, RotateCcw, Eye, EyeOff } from 'lucide-react';
 import { buildMarkdownPreviewHtml, buildTerminalPreviewHtml } from '@/lib/preview';
 import { runCommands } from '@/lib/gitSimulator';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface CodingChallengeProps {
   title: string;
@@ -34,19 +35,21 @@ export default function CodingChallenge({ title, description, initialCode, answe
   const [hintIndex, setHintIndex] = useState(0);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [previewHtml, setPreviewHtml] = useState('');
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   useEffect(() => {
     if (!preview) return;
     const timer = setTimeout(() => {
       if (previewType === 'markdown') {
-        setPreviewHtml(buildMarkdownPreviewHtml(code));
+        setPreviewHtml(buildMarkdownPreviewHtml(code, isDark));
       } else {
         const termOutput = runCommands(code);
-        setPreviewHtml(buildTerminalPreviewHtml(termOutput));
+        setPreviewHtml(buildTerminalPreviewHtml(termOutput, isDark));
       }
     }, 400);
     return () => clearTimeout(timer);
-  }, [code, preview, previewType]);
+  }, [code, preview, previewType, isDark]);
 
   const blobUrl = useMemo(() => {
     if (!previewHtml) return '';
@@ -77,10 +80,10 @@ export default function CodingChallenge({ title, description, initialCode, answe
               <span className="text-xs font-mono text-[#cdd6f4]/60 uppercase">エディタ</span>
             </div>
             <textarea value={code} onChange={(e) => { setCode(e.target.value); setIsCorrect(null); }} spellCheck={false} wrap="off"
-              className="w-full p-4 font-mono text-sm leading-relaxed bg-transparent text-[#cdd6f4] resize-none focus:outline-none min-h-[160px] overflow-auto whitespace-pre"
+              className="w-full py-4 px-5 font-mono text-sm leading-relaxed bg-transparent text-[#cdd6f4] resize-none focus:outline-none min-h-[160px] overflow-auto whitespace-pre"
               rows={Math.max(6, code.split('\n').length + 1)} />
           </div>
-          <div className="relative rounded-lg overflow-hidden border border-border" style={{ minHeight: '256px' }}>
+          <div className="relative rounded-lg overflow-hidden border border-border bg-white dark:bg-[#1e1e2e]" style={{ minHeight: '256px' }}>
             <div className="absolute top-2 right-2 text-xs text-muted-foreground z-10 bg-background/80 px-2 py-0.5 rounded">プレビュー</div>
             {blobUrl && (
               <iframe src={blobUrl} className="w-full h-full border-0" style={{ minHeight: '256px' }} sandbox="allow-scripts" title="プレビュー" />
@@ -93,7 +96,7 @@ export default function CodingChallenge({ title, description, initialCode, answe
             <span className="text-xs font-mono text-[#cdd6f4]/60 uppercase">エディタ</span>
           </div>
           <textarea value={code} onChange={(e) => { setCode(e.target.value); setIsCorrect(null); }} spellCheck={false} wrap="off"
-            className="w-full p-4 font-mono text-sm leading-relaxed bg-transparent text-[#cdd6f4] resize-none focus:outline-none min-h-[160px] overflow-auto whitespace-pre"
+            className="w-full py-4 px-5 font-mono text-sm leading-relaxed bg-transparent text-[#cdd6f4] resize-none focus:outline-none min-h-[160px] overflow-auto whitespace-pre"
             rows={Math.max(6, code.split('\n').length + 1)} />
         </div>
       )}

@@ -4,8 +4,11 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Navigation from "./components/Navigation";
+import HelpModal from "./components/HelpModal";
+import SettingsPopup from "./components/SettingsPopup";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { OSProvider } from "./contexts/OSContext";
+import { LayoutProvider, useLayout } from "./contexts/LayoutContext";
 import Home from "./pages/Home";
 
 // Environment Pages
@@ -53,10 +56,13 @@ import { useAutoHeadingIds } from "./hooks/useAutoHeadingIds";
 
 function Router() {
   useAutoHeadingIds();
+  const { layoutMode } = useLayout();
   return (
-    <div className="flex">
+    <div className={`flex ${layoutMode === 'wide' ? 'layout-wide' : ''}`}>
       <Navigation />
       <KeyboardNav />
+      <HelpModal />
+      <SettingsPopup />
       <main className="flex-1 md:ml-64">
         <Switch>
           <Route path={"/"} component={Home} />
@@ -121,13 +127,13 @@ function App() {
   return (
     <ErrorBoundary>
       <OSProvider>
-        <ThemeProvider
-          defaultTheme="light"
-        >
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
+        <ThemeProvider>
+          <LayoutProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Router />
+            </TooltipProvider>
+          </LayoutProvider>
         </ThemeProvider>
       </OSProvider>
     </ErrorBoundary>
